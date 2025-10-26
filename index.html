@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today Maubin News Agency</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/weblogo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/weblogo.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="images/weblogo.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="images/weblogo.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="images/weblogo.png">
+    <link rel="shortcut icon" type="image/png" href="images/weblogo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/weblogo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-green': '#2d5a27',
+                        'light-gray': '#f3f4f6',
+                        'dark-gray': '#374151',
+                        'dark-blue': '#1e3a8a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Padauk', sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+        .active {
+            font-weight: bold;
+            border-bottom: 2px solid #2d5a27;
+        }
+        .page-content {
+            background: #ffffff;
+        }
+        .news-card {
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2));
+        }
+        header {
+            background: #ffffff !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .logo-white {
+            filter: brightness(0) invert(1) !important;
+            -webkit-filter: brightness(0) invert(1) !important;
+        }
+        .logo-white:hover {
+            filter: brightness(0) invert(1) !important;
+            -webkit-filter: brightness(0) invert(1) !important;
+        }
+        .logo-white-strong {
+            filter: brightness(0) invert(1) contrast(1000%) saturate(0) !important;
+            -webkit-filter: brightness(0) invert(1) contrast(1000%) saturate(0) !important;
+        }
+        .logo-white-mask {
+            background: white;
+            -webkit-mask: url('images/weblogo1.png') no-repeat center;
+            mask: url('images/weblogo1.png') no-repeat center;
+            -webkit-mask-size: contain;
+            mask-size: contain;
+        }
+    </style>
+</head>
+<body class="bg-light-gray">
+    <!-- Header -->
+    <header class="shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <img src="images/weblogo.png" alt="Today Maubin News Agency" class="h-12 md:h-16 w-auto">
+                    <img src="images/weblogo1.png" alt="Today Maubin News Agency" class="h-12 md:h-16 w-auto">
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-dark-green focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#" class="nav-link text-dark-green hover:text-green-600" data-page="home">ပင်မစာမျက်နှာ</a>
+                    <a href="#" class="nav-link text-dark-green hover:text-green-600" data-page="local">ဒေသတွင်း‌သတင်းများ</a>
+                    <a href="#" class="nav-link text-dark-green hover:text-green-600" data-page="international">နိုင်ငံတကာသတင်း</a>
+                    <a href="#" class="nav-link text-dark-green hover:text-green-600" data-page="sports">အားကစားသတင်း</a>
+                    <a href="#" class="nav-link text-dark-green hover:text-green-600" data-page="articles">ဆောင်းပါး</a>
+                    <a href="#" class="nav-link text-dark-green hover:text-green-600" data-page="about">သတင်းဌာနအကြောင်း</a>
+                </nav>
+            </div>
+            <div id="mobile-menu" class="md:hidden hidden bg-white rounded-lg mt-2 shadow-lg border">
+                <div class="flex flex-col space-y-3 py-4 px-4">
+                    <a href="#" class="nav-link text-dark-green hover:text-green-600" data-page="home">ပင်မစာမျက်နှာ</a>
+                    <a href="#" class="nav-link text-dark-green hover:text-green-600" data-page="local">ဒေသတွင်း‌သတင်းများ</a>
+                    <a href="#" class="nav-link text-dark-green hover:text-green-600" data-page="international">နိုင်ငံတကာသတင်း</a>
+                    <a href="#" class="nav-link text-dark-green hover:text-green-600" data-page="sports">အားကစားသတင်း</a>
+                    <a href="#" class="nav-link text-dark-green hover:text-green-600" data-page="articles">ဆောင်းပါး</a>
+                    <a href="#" class="nav-link text-dark-green hover:text-green-600" data-page="about">သတင်းဌာနအကြောင်း</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-12 page-content">
+        <!-- Home Page -->
+        <div id="home-page" class="page">
+            <!-- Hero Section -->
+            <section class="mb-16">
+                <div class="relative w-full">
+                    <!-- Video Background -->
+                    <div class="relative h-[70vh] min-h-[500px] max-h-[700px]">
+                        <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                            <source src="images/mal.mp4" type="video/mp4">
+                            သင်၏ဘရောက်ဇာသည် ဗီဒီယိုကိုထောက်ပံ့မပေးပါ။
+                        </video>
+                        
+                        <!-- Light Overlay for Better Video Visibility -->
+                        <div class="absolute inset-0 hero-overlay"></div>
+                        
+                        <!-- Hero Content with Transparent Text -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="container mx-auto px-8 text-center">
+                                <div class="max-w-3xl">
+                                    <!-- Main Headline -->
+                                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight drop-shadow-lg">
+                                        Today Maubin News Agency
+                                    </h1>
+                                    
+                                    <!-- Subtitle -->
+                                    <p class="text-xl md:text-2xl text-white mb-6 leading-relaxed drop-shadow-lg">
+                                        မအူပင်မြို့၏ ယုံကြည်စိတ်ချရသော သတင်းဌာန
+                                    </p>
+                                    
+                                    <!-- Description -->
+                                    <p class="text-base md:text-lg text-white/90 mb-8 leading-relaxed drop-shadow-lg">
+                                        ဒေသတွင်း၊ နိုင်ငံတကာ သတင်းများနှင့် အားကစားသတင်းများကို 
+                                        တိကျမှန်ကန်စွာ ပေးပို့ပေးနေပါသည်။
+                                    </p>
+                                    
+                                    <!-- Call to Action Buttons -->
+                                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                                        <a href="#" class="nav-link bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold text-center transition-all duration-300 transform hover:scale-105 shadow-lg" data-page="local">
+                                            ဒေသတွင်းသတင်းများ
+                                        </a>
+                                        <a href="#" class="nav-link bg-transparent hover:bg-white/20 text-white border-2 border-white hover:border-green-300 px-8 py-3 rounded-lg font-semibold text-center transition-all duration-300 shadow-lg" data-page="international">
+                                            နိုင်ငံတကာသတင်း
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Scroll Indicator -->
+                        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2">
+                            <div class="animate-bounce">
+                                <div class="flex flex-col items-center text-white/80">
+                                    <span class="text-xs mb-1">Scroll Down</span>
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest News -->
+            <section class="py-8">
+                <h2 class="text-2xl font-bold text-dark-green mb-8">နောက်ဆုံးသတင်းများ</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- News Card 1 - Garbage Cleanup -->
+                    <div class="news-card rounded-lg shadow-md overflow-hidden">
+                        <div class="relative w-full h-48 overflow-hidden">
+                            <img src="images/daythatwin.png" alt="မအူပင်မြို့ အ.ထ.က (၁)ကျောင်းအနီးအမှိုက်ပုံရှင်းလင်း" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-dark-gray mb-2">မအူပင်မြို့ အ.ထ.က (၁)ကျောင်းအနီးအမှိုက်ပုံရှင်းလင်း</h3>
+                            <p class="text-dark-gray mb-4">ဧရာဝတီတိုင်းဒေသကြီး ၊ မအူပင်မြို့ အမှတ်(၁) အခြေခံပညာအထက်တန်းကျောင်း အနောက်ဖက်တွင် စည်းကမ်းမဲ့အမှိုက်ပစ်သူများကြောင့်ဖြစ်ပေါ်နေသော အမှိုက်ပုံအား ယနေ့အောက်တိုဘာ (၂၄)ရက်နေ့ နေ့လည်ပိုင်းက ကျောင်းအကျိုးတော်ဆောင်အဖွဲ့နှင့် မအူပင်မြို့နယ် စည်ပင်သာယာရေးကော်မတီတို့မှ ပူပေါင်းကာ ရှင်းလင်းမှုများလုပ်ဆောင်ခဲ့ကြကြောင်း သိရသည်။</p>
+                            <div class="text-sm text-gray-600 mb-4">အောက်တိုဘာ - ၂၄</div>
+                            <a href="#" class="nav-link text-dark-green font-semibold hover:underline" data-page="local">ပိုမိုသိရှိရန်</a>
+                        </div>
+                    </div>
+
+                    <!-- News Card 2 - Road Damage -->
+                    <div class="news-card rounded-lg shadow-md overflow-hidden">
+                        <div class="relative w-full h-48 overflow-hidden">
+                            <img src="images/daythatwin3.png" alt="ထန်းပင်ကွေ့အရှေ့ ဆည်မြောင်းတာဘောင်ပေါ်ရှိ ကိုယ်ထူကိုယ်ထကွန်ကရစ်လမ်းပျက်စီး" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-dark-gray mb-2">ထန်းပင်ကွေ့အရှေ့ ဆည်မြောင်းတာဘောင်ပေါ်ရှိ ကိုယ်ထူကိုယ်ထကွန်ကရစ်လမ်းပျက်စီး</h3>
+                            <p class="text-dark-gray mb-4">ဧရာဝတီတိုင်းဒေသကြီး မအူပင်မြို့နယ် ထန်းပင်ကွေ့အရှေ့ကျေးရွာအပါအဝင် ကျေးရွာများသို့ ဆက်သွယ်ထားသည့် ဆည်မြောင်းတာဘောင်လမ်းအား ကျေးလက်နေပြည်သူများမှ ကိုယ်ထူကိုယ်ထ ကွန်ကရစ်လမ်း ခင်းထားသော်လည်း ငါးကန်လုပ်ငန်းရှင်များ၏ ငါးကားများမှာ အဆမတန်ကုန်များတင်ဆောင်သွားလာမှုကြောင့် လမ်းများပျက်စီးကာ ကျေးလက်နေပြည်သူများ ခရီးသွားလာရခက်ခဲနေကြောင်း ဒေသခံပြည်သူတစ်ဦးက Today Maubin News Agency သတင်းဌာနသို့ပြောသည်။</p>
+                            <div class="text-sm text-gray-600 mb-4">အောက်တိုဘာ (၂၁)</div>
+                            <a href="#" class="nav-link text-dark-green font-semibold hover:underline" data-page="local">ပိုမိုသိရှိရန်</a>
+                        </div>
+                    </div>
+
+                    <!-- News Card 3 - Boiler Explosion -->
+                    <div class="news-card rounded-lg shadow-md overflow-hidden">
+                        <div class="relative w-full h-48 overflow-hidden">
+                            <img src="images/daythatwin6.png" alt="ဆန်စက်ဘွိုင်လာအိုးပေါက်ကွဲမှု" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-dark-gray mb-2">ဆန်စက်ဘွိုင်လာအိုးပေါက်ကွဲမှု ကြောင့် ဖျာပုံတွင် အမျိုးသားတစ်ဦး သေဆုံး</h3>
+                            <p class="text-dark-gray mb-4">ဧရာဝတီတိုင်း၊ ဖျာပုံမြို့နယ်၊ ချောင်းတွင်းကျေးရွာအုပ်စုတွင် အောက်တိုဘာလ (၂၁)ရက်နေ့ နံနက်ပိုင်းကဆန်စက်ဘွိုင်လာအိုး ပေါက်ကွဲမှုဖြစ်စဉ် ကြောင့် မီး လောင်မှု ဖြစ်ပွား ပြီး အမျိုးသားတစ်ဦးသေဆုံးကာ (၄)ဦး ဒါဏ်ရာရရှိခဲ့ ကြောင်းသိရသည်။</p>
+                            <div class="text-sm text-gray-600 mb-4">အောက်တိုဘာ (၂၁)</div>
+                            <a href="#" class="nav-link text-dark-green font-semibold hover:underline" data-page="local">ပိုမိုသိရှိရန်</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Local News Page -->
+        <div id="local-page" class="page hidden">
+            <h2 class="text-3xl font-bold text-dark-green mb-6">ဒေသတွင်း‌သတင်းများ</h2>
+            <div class="space-y-8">
+                <!-- Main Article - Garbage Cleanup -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <!-- Image Carousel -->
+                    <div class="relative w-full h-80 overflow-hidden">
+                        <div id="image-carousel" class="flex transition-transform duration-500 ease-in-out">
+                            <div class="w-full h-80 flex-shrink-0">
+                                <img src="images/daythatwin.png" alt="မအူပင်မြို့ အ.ထ.က (၁)ကျောင်းအနီးအမှိုက်ပုံရှင်းလင်း - ပုံ ၁" class="w-full h-full object-cover">
+                            </div>
+                            <div class="w-full h-80 flex-shrink-0">
+                                <img src="images/daythatwin1.png" alt="မအူပင်မြို့ အ.ထ.က (၁)ကျောင်းအနီးအမှိုက်ပုံရှင်းလင်း - ပုံ ၂" class="w-full h-full object-cover">
+                            </div>
+                            <div class="w-full h-80 flex-shrink-0">
+                                <img src="images/daythatwin2.png" alt="မအူပင်မြို့ အ.ထ.က (၁)ကျောင်းအနီးအမှိုက်ပုံရှင်းလင်း - ပုံ ၃" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Arrows -->
+                        <button id="prev-btn" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button id="next-btn" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        
+                        <!-- Dots Indicator -->
+                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <button class="carousel-dot w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all duration-300 active" data-slide="0"></button>
+                            <button class="carousel-dot w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all duration-300" data-slide="1"></button>
+                            <button class="carousel-dot w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all duration-300" data-slide="2"></button>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-dark-gray mb-4">မအူပင်မြို့ အ.ထ.က (၁)ကျောင်းအနီးအမှိုက်ပုံရှင်းလင်း ၊ စည်းကမ်းမဲ့အမှိုက်ပစ်သူများကိုအရေးယူမည်</h3>
+                        <div class="text-sm text-gray-600 mb-4">အောက်တိုဘာ - ၂၄</div>
+                        <div class="prose max-w-none text-dark-gray leading-relaxed">
+                            <p class="mb-4">ဧရာဝတီတိုင်းဒေသကြီး ၊ မအူပင်မြို့ အမှတ်(၁) အခြေခံပညာအထက်တန်းကျောင်း အနောက်ဖက်တွင် စည်းကမ်းမဲ့အမှိုက်ပစ်သူများကြောင့်ဖြစ်ပေါ်နေသော အမှိုက်ပုံအား ယနေ့အောက်တိုဘာ (၂၄)ရက်နေ့ နေ့လည်ပိုင်းက ကျောင်းအကျိုးတော်ဆောင်အဖွဲ့နှင့် မအူပင်မြို့နယ် စည်ပင်သာယာရေးကော်မတီတို့မှ ပူပေါင်းကာ ရှင်းလင်းမှုများလုပ်ဆောင်ခဲ့ကြကြောင်း သိရသည်။</p>
+                            
+                            <p class="mb-4">" ကျောင်း အနီးမှာ စည်းကမ်းမဲ့စွန့်ပစ်ထားတဲ့အမှိုက်တွေကြောင့် ပတ်ဝန်းကျင် ကောလမ်းသွားလမ်းလာများနှင့် အ.ထ.က (၁) ကျောင်းမှာတက်နေသောခလေးတွေပါ နေ့တိုင်းလိုလိုအမှိုက်ပုံက ထွက်တဲ့ အနံဆိုးတွေကို ရူရှိုက်နေရတော့ ကျန်းမာရေးအတွက်လည်းမကောင်းဘူး ၊ ကျောင်းပုံရိပ်လည်းထိခိုက်တယ်.........ဒါကြောင့်အခုလိုစည်ပင်သာယာရေးကော်မတီနဲ့ပူပေါင်းပြီးသန့်ရှင်းစေဖို့လုပ်ဆောင်တာပါ........နောက်အမှိုက်ပြန်မစွန့်ပစ်အောင်လည်း သဲတွေပါခင်းထားခဲ့ပါတယ်"ဟု ကျောင်းအကျိုးတော်ဆောင်တစ်ဦးက Today Maubin News Agency သို့ပြောသည်။</p>
+                            
+                            <p class="mb-4">အဆိုပါ အမှိုက်ပုံရှင်းလင်းခြင်းလုပ်ငန်းစဉ်သို့ ကျောင်းအကျိုးတော်ဆောင်အဖွဲ့နှင့်အတူ မအူပင်မြို့နယ် စည်ပင်သာယာရေးကော်မတီမှ သန့်ရှင်းရေလုပ်သားများက ပါဝင်ကူညီပေးခဲ့ြပြီး အမိူက် မပစ်ရ ဒဏ်ငွေ ၅၀၀၀၀ သတိပေးဆိုင်းဘုတ်ကို ပါစိုက်ထူပေးခဲ့ကြကြောင်းလည်းသိရသည်။</p>
+                            
+                            <div class="mt-6 pt-4 border-t border-gray-200">
+                                <p class="text-sm text-gray-600 mb-2">Photo - Today Maubin News Agency</p>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#todaymaubin</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 2 - Damaged Road -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <!-- Image Carousel -->
+                    <div class="relative w-full h-80 overflow-hidden">
+                        <div id="image-carousel-2" class="flex transition-transform duration-500 ease-in-out">
+                            <div class="w-full h-80 flex-shrink-0">
+                                <img src="images/daythatwin3.png" alt="ထန်းပင်ကွေ့အရှေ့ ဆည်မြောင်းတာဘောင်ပေါ်ရှိ ကိုယ်ထူကိုယ်ထကွန်ကရစ်လမ်းပျက်စီး - ပုံ ၁" class="w-full h-full object-cover">
+                            </div>
+                            <div class="w-full h-80 flex-shrink-0">
+                                <img src="images/daythatwin4.png" alt="ထန်းပင်ကွေ့အရှေ့ ဆည်မြောင်းတာဘောင်ပေါ်ရှိ ကိုယ်ထူကိုယ်ထကွန်ကရစ်လမ်းပျက်စီး - ပုံ ၂" class="w-full h-full object-cover">
+                            </div>
+                            <div class="w-full h-80 flex-shrink-0">
+                                <img src="images/daythatwin5.png" alt="ထန်းပင်ကွေ့အရှေ့ ဆည်မြောင်းတာဘောင်ပေါ်ရှိ ကိုယ်ထူကိုယ်ထကွန်ကရစ်လမ်းပျက်စီး - ပုံ ၃" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Arrows -->
+                        <button id="prev-btn-2" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button id="next-btn-2" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        
+                        <!-- Dots Indicator -->
+                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <button class="carousel-dot-2 w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all duration-300 active" data-slide="0"></button>
+                            <button class="carousel-dot-2 w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all duration-300" data-slide="1"></button>
+                            <button class="carousel-dot-2 w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all duration-300" data-slide="2"></button>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-dark-gray mb-4">ထန်းပင်ကွေ့အရှေ့ ဆည်မြောင်းတာဘောင်ပေါ်ရှိ ကိုယ်ထူကိုယ်ထကွန်ကရစ်လမ်းပေါ် ငါးကားတွေအဆမတန် ကုန်တင်ဆောင်မောင်နှင့်သဖြင့် လမ်းပျက်စီးပြီးကျေးလက်နေပြည်သူများ သွားလာရေးခက်ခဲနေ</h3>
+                        <div class="text-sm text-gray-600 mb-4">အောက်တိုဘာ (၂၁)</div>
+                        <div class="prose max-w-none text-dark-gray leading-relaxed">
+                            <p class="mb-4">ဧရာဝတီတိုင်းဒေသကြီး မအူပင်မြို့နယ် ထန်းပင်ကွေ့အရှေ့ကျေးရွာအပါအဝင် ကျေးရွာများသို့ ဆက်သွယ်ထားသည့် ဆည်မြောင်းတာဘောင်လမ်းအား ကျေးလက်နေပြည်သူများမှ ကိုယ်ထူကိုယ်ထ ကွန်ကရစ်လမ်း ခင်းထားသော်လည်း ငါးကန်လုပ်ငန်းရှင်များ၏ ငါးကားများမှာ အဆမတန်ကုန်များတင်ဆောင်သွားလာမှုကြောင့် လမ်းများပျက်စီးကာ ကျေးလက်နေပြည်သူများ ခရီးသွားလာရခက်ခဲနေကြောင်း ဒေသခံပြည်သူတစ်ဦးက Today Maubin News Agency သတင်းဌာနသို့ပြောသည်။</p>
+                            
+                            <p class="mb-4">"လမ်းက ကိုယ်ထူကိုယ်ထခင်းထားတာပါ.....အခုငါးကန်လုပ်ငန်းရှင်တွေရဲ့ ငါးကားတွေက စည်းကမ်းမဲ့ ကုန်ချိန်တင်မောင်းနှင်မှုကြောင့် လမ်းကပျက်သွားပြီ......သက်ဆိုင်ရာဌာနကိုတင်ပြတော့လည်း ဆည်မြောင်းတာဘောင်ဖြစ်လို့ ဘဂျတ်ကချက်ချင်းချပေးလို့မရသေးဘူး........အခက်အခဲကတော့လမ်းကသွားလို့မရတော့ဘူး ......ကားလေးဆိုတော်တော်ကြီးမောင်းလို့မရတော့တဲ့အခြေအနေဖြစ်သွားပြီ.......ဆိုင်ကယ်လည်းသွားဖို့အနေအထားတော်တော်ဆိုးသွားပြီ........."ဟု ဒေသခံတစ်ဦးက Today Maubin News Agency သတင်းဌာနသို့ပြောသည်။</p>
+                            
+                            <p class="mb-4">အဆိုပါ ထန်းပင်ကွေ့အရှေ့ကျေးရွာရှိဆည်မြောင်းတာဘောင်သည် မအူပင်မြို့နှင့် သုံးခွကျွန်းကျေးရွာများသို့ဆက်သွယ်ပေးထားသည့် အဓိက လမ်းမကြီးဖြစ်ပြီး ပညာရေး ၊ ကျန်းမာရေး ကိစ္စရပ်များအတွက် အရေးပါသောလမ်းတစ်လမ်းလည်းဖြစ်သည်။</p>
+                            
+                            <div class="mt-6 pt-4 border-t border-gray-200">
+                                <p class="text-sm text-gray-600 mb-2">Photo : crd</p>
+                                <div class="flex items-center space-x-2">
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#todaymaubin</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 3 - Boiler Explosion -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <!-- Image Carousel -->
+                    <div class="relative w-full h-80 overflow-hidden">
+                        <div id="image-carousel-3" class="flex transition-transform duration-500 ease-in-out">
+                            <div class="w-full h-80 flex-shrink-0">
+                                <img src="images/daythatwin6.png" alt="ဆန်စက်ဘွိုင်လာအိုးပေါက်ကွဲမှု - ပုံ ၁" class="w-full h-full object-cover">
+                            </div>
+                            <div class="w-full h-80 flex-shrink-0">
+                                <img src="images/daythatwin7.png" alt="ဆန်စက်ဘွိုင်လာအိုးပေါက်ကွဲမှု - ပုံ ၂" class="w-full h-full object-cover">
+                            </div>
+                            <div class="w-full h-80 flex-shrink-0">
+                                <img src="images/daythatwin8.png" alt="ဆန်စက်ဘွိုင်လာအိုးပေါက်ကွဲမှု - ပုံ ၃" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Arrows -->
+                        <button id="prev-btn-3" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button id="next-btn-3" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        
+                        <!-- Dots Indicator -->
+                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <button class="carousel-dot-3 w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all duration-300 active" data-slide="0"></button>
+                            <button class="carousel-dot-3 w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all duration-300" data-slide="1"></button>
+                            <button class="carousel-dot-3 w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all duration-300" data-slide="2"></button>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-dark-gray mb-4">ဆန်စက်ဘွိုင်လာအိုးပေါက်ကွဲမှု ကြောင့် ဖျာပုံတွင် အမျိုးသားတစ်ဦး သေဆုံး</h3>
+                        <div class="text-sm text-gray-600 mb-4">အောက်တိုဘာ (၂၁)</div>
+                        <div class="prose max-w-none text-dark-gray leading-relaxed">
+                            <p class="mb-4">ဧရာဝတီတိုင်း၊ ဖျာပုံမြို့နယ်၊ ချောင်းတွင်းကျေးရွာအုပ်စုတွင် အောက်တိုဘာလ (၂၁)ရက်နေ့ နံနက်ပိုင်းကဆန်စက်ဘွိုင်လာအိုး ပေါက်ကွဲမှုဖြစ်စဉ် ကြောင့် မီး‌ လောင်မှု ဖြစ်ပွား ပြီး အမျိုးသားတစ်ဦးသေဆုံးကာ (၄)ဦး ဒါဏ်ရာရရှိခဲ့ ကြောင်းသိရသည်။</p>
+                            
+                            <p class="mb-4">လက်ရှိမှာ သေဆုံးသူအမျိုးသားနဲ့ ထိခိုက်ဒဏ်ရာရသူ အမျိုးသားသုံးယောက်၊အမျိုးသမီးတယောက်ကို ဖျာပုံဆေးရုံကိုပို့ဆောင်ထားပြီး ထိခိုက်ဒဏ်ရာရရှိသူတွေကတော့ ဆန်စက်က ဖြစ်တယ်လို့သိရသည်။</p>
+                            
+                            <p class="mb-4">အောက်တိုဘာ ၂၀ ရက်ကလည်း ဧရာဝတီတိုင်း ၊ဟင်္သာတမြို့နယ်က္ကယ်ပြင်အုပ်စု၊ပေါ်သစ်ကျေးရွာမှာ လေဆင်နှာမောင်းတိုက်ခတ်မှုကြောင့် နေအိမ်ပေါ် သစ်ပင်လဲကျပြီး သုံးလသားအရွယ် ကလေးငယ်တယောက်သေဆုံးမှုဖြစ်ပွားခဲ့‌ကြောင်းလည်းသိရသည်။</p>
+                            
+                            <div class="mt-6 pt-4 border-t border-gray-200">
+                                <p class="text-sm text-gray-600 mb-2">ဓါတ်ပုံ - မီးသတ်ဌာန</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#todaymaubin</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#ဖျာပုံ</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#မီးလောင်မှု</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#ဘွိုင်လာအိုးပေါက်ကွဲ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- International News Page -->
+        <div id="international-page" class="page hidden">
+            <h2 class="text-3xl font-bold text-dark-green mb-6">နိုင်ငံတကာသတင်း</h2>
+            <div class="space-y-8">
+                <!-- Article 1 - Trump and Xi Meeting -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative w-full h-96 overflow-hidden">
+                        <img src="images/inter.png" alt="ထရမ့်နှင့် ရှီကျင့်ဖိန် တွေ့ဆုံမှု" class="w-full h-full object-cover" style="object-position: 50% 20%;">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-dark-gray mb-4">တောင်ကိုရီးယားနိုင်ငံမှာ ထရမ့်နှင့် ရှီ တို့တွေ့ဆုံမည်</h3>
+                        <div class="text-sm text-gray-600 mb-4">အောက်တိုဘာ (၃၀)</div>
+                        <div class="prose max-w-none text-dark-gray leading-relaxed">
+                            <p class="mb-4">တောင်ကိုရီးယားနိုင်ငံမှာ ကျင်းပပြုလုပ်မည့် အာရှထိပ်သီးဆွေးနွေးပွဲ တစ်ခုရဲ့ သီခြားဆွေးနွေးပွဲမှာ အမေရိကန်သမ္မတ ဒေါ်နယ်ထရမ့် နှင့် တရုတ်သမ္မတ ရှီကျင့်ဖိန် တို့ တွေ့ဆုံမှာဖြစ်ကြောင်း အိမ်ဖြူတော်၏ အတည်ပြုထုတ်ပြန်ချက်အရ သိရသည်။</p>
+                            
+                            <p class="mb-4">ရှီကျင့်ဖိန်နဲ့ထရမ့်တို့ တွေ့ဆုံဖို့ သီတင်းပတ်နဲ့ချီ ကြိုးပမ်းနေခဲ့ကြတာဖြစ်ပြီး ထရမ့်ဒုတိယအကြိမ် သမ္မတဖြစ်လာပြီး ယခုတွေ့ဆုံမှုဟာ သူတို့နှစ်ဦးဟာ ပထမအကြိမ်မျက်နှာချင်းဆိုင်တွေ့ဆုံမှုတစ်ခု ဖြစ်လာဖွယ်လည်းရှိသည်။</p>
+                            
+                            <p class="mb-4">ယင်းသို့တွေ့ဆုံမည့် အကြောင်းကို အိမ်ဖြူတော်ပြန်ကြားရေးအရာရှိ ကယ်ရယ်လိုင်းလိဗစ် က သတင်းစာရှင်းလင်းပွဲမှာ အတည်ပြုပြောကြားခဲ့ပြီး ၎င်းတွေ့ဆုံမှုကို အောက်တိုဘာလ (၃၀)ရက်နေ့မှာတွေ့ဆုံသွားမှာလည်းဖြစ်သည်။</p>
+                            
+                            <div class="mt-6 pt-4 border-t border-gray-200">
+                                <p class="text-sm text-gray-600 mb-2">Photo : crd</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#todaymaubin</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#နိုင်ငံတကာသတင်း</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#ထရမ့်</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#ရှီကျင့်ဖိန်</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sports News Page -->
+        <div id="sports-page" class="page hidden">
+            <h2 class="text-3xl font-bold text-dark-green mb-6">အားကစားသတင်း</h2>
+            <div class="space-y-8">
+                <!-- Article 1 - Liverpool vs Man United -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative w-full h-96 overflow-hidden">
+                        <img src="images/arrkasar.png" alt="လီဗာပူး vs မန်ချက်စတာ ယူနိုက်တက်" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-dark-gray mb-4">လီဗာပူး 1-2 မန်ချက်စတာ ယူနိုက်တက်</h3>
+                        <div class="text-sm text-gray-600 mb-4">Premier League</div>
+                        <div class="prose max-w-none text-dark-gray leading-relaxed">
+                            <p class="mb-4">ပရီးမီးယားလိဂ်ပွဲစဉ်တွင် လီဗာပူးနှင့် မန်ချက်စတာ ယူနိုက်တက်တို့ ရင်ဆိုင်ကြုံခဲ့ရသည့် ပွဲစဉ်တစ်ခု ဖြစ်ပါသည်။</p>
+                            
+                            <p class="mb-4">ပွဲစဉ်တွင် လီဗာပူးသည် ဦးစွာ ဂိုး ရသွားပြီး ၁-၀ ဖြင့် ရှေ့သို့ တက်ထားခဲ့သည်။ သို့သော် နောက်ပိုင်းတွင် မန်ချက်စတာ ယူနိုက်တက်က တုံ့ပြန်ပြီး နောက်ဆုံးတွင် ၂-၁ ဖြင့် အနိုင်ရရှိခဲ့သည်။</p>
+                            
+                            <p class="mb-4">ပွဲစဉ်သည် အငြင်းပွားဖွယ်ရာ အချိန်တစ်ခု ဖြစ်ခဲ့ပြီး ပရီးမီးယားလိဂ်ပြိုင်ပွဲတွင် အကောင်းဆုံး ပွဲစဉ်များထဲမှ တစ်ခု အဖြစ် အသိအမှတ်ပြုခံရသည်။</p>
+                            
+                            <div class="mt-6 pt-4 border-t border-gray-200">
+                                <p class="text-sm text-gray-600 mb-2">Photo : crd</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#todaymaubin</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#လီဗာပူး</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#မန်ချက်စတာယူနိုက်တက်</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#PremierLeague</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 2 - Football Tournament -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative w-full h-96 overflow-hidden">
+                        <img src="images/arrkasar1.png" alt="ကျွဲဒုံးတိုက်နယ် ကမ်းသာယာ ကမ်းခြေ ဘောလုံးပြိုင်ပွဲ" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-dark-gray mb-4">ကျွဲဒုံးတိုက်နယ် ကမ်းသာယာ ကမ်းခြေတွင် အခြေခံပညာ အထက်တန်း / အလယ်တန်းအဆင့် ဘောလုံးပြိုင်ပွဲကျင်းပမည်</h3>
+                        <div class="text-sm text-gray-600 mb-4">အောက်တိုဘာ (၃၀)</div>
+                        <div class="prose max-w-none text-dark-gray leading-relaxed">
+                            <p class="mb-4">ဧရာဝတီတိုင်းဒေသကြီး မအူပင်မြို့နယ် ကျွဲဒုံးကျေးရွာအုပ်စုရှိ ကမ်းသာယာအားကစားကွင်းတွင် အခြေခံပညာအထက်တန်း ၊ အလယ်တန်းအဆင့် ဘောလုံးပြိုင်ပွဲကို လာမယ့် နိုဝင်ဘာလ အတွင်းပြုလုပ်ကျင်းပသွားမည်ဖြစ်ကြောင်းသိရသည်။</p>
+                            
+                            <p class="mb-4">"အခြေခံပညာကျောင်းပေါင်းစုံ ဖူဆယ်ဘောလုံးပြိုင်ပွဲ"ကို ကျွဲဒုံးတိုက်နယ် အတွင်းနှင့် ပါဝင်ယှဉ်ပြိုင်ကစားလိုသော ကျောင်းများမှအခြေခံပညာ အထက်တန်းဆင့်၊ အလယ်တန်းဆင့်ကျောင်းသားများ ဘောလုံးအားကစား စွမ်းရည် တိုးတက်မြင့်မားစေရန် တိုက်နယ်‌ဒေသဖွံ့ဖြိုးရေးအကျိုးဆောင် ဦးမြစိုးKKB မှ ဦးဆောင်ကျင်းပသွားမည်ဖြစ်ပြီး ပါဝင်ယှဉ်ပြိုင် ကစားလိုသော အခြေခံပညာ ကျောင်းများအနေဖြင့် အောက်တိုဘာလ (၃၀)ရက်နေ့ နောက်ဆုံးထား စာရင်းများ ပေးသွင်းနိုင်ပြီဖြစ်ကြောင်းလည်းသိရသည်။</p>
+                            
+                            <p class="mb-4">ကျွဲဒုံးကျေးရွာ ကမ်းသာယာအားကစားကွင်းတွင် ၂၀၁၉ ခုနှစ် အောက်တိုဘာလ(၁၉)ရက်နေ့ကလည်း ယခုကဲ့သို့ အခြေခံပညာအထက်တန်းအလယ်တန်းအဆင့်ဘောလုံး ပြိုင်ပွဲများ ကျင်းပပေးခဲ့ဖူးကြောင်းလည်းသိရသည်။</p>
+                            
+                            <div class="mt-6 pt-4 border-t border-gray-200">
+                                <p class="text-sm text-gray-600 mb-2">Photo : Today Maubin News Agency</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#todaymaubin</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#ကျွဲဒုံးတိုက်နယ်</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#ဘောလုံးပြိုင်ပွဲ</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#ထက်လယ်</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 3 - Myanmar U17 Women -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative w-full h-96 overflow-hidden">
+                        <img src="images/arrkasar2.png" alt="မြန်မာ အမျိုးသမီး U17 ဘောလုံးပွဲ" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-dark-gray mb-4">ပွဲပြီးရလဒ် - မြန်မာ 🇲🇲 ( ၁ - ၀ ) 🇲🇨 အင်ဒိုနီးရှား</h3>
+                        <div class="text-sm text-gray-600 mb-4">အာရှအမျိုးသမီး U17 ခြေစစ်ပွဲ</div>
+                        <div class="prose max-w-none text-dark-gray leading-relaxed">
+                            <p class="mb-4">အာရှအမျိုးသမီး U17 ခြေစစ်ပွဲတွင် မြန်မာနိုင်ငံအမျိုးသမီးဘောလုံးအသင်းသည် အင်ဒိုနီးရှားအသင်းကို ၁-၀ ဖြင့် အနိုင်ရရှိခဲ့ပြီး အားရကျေနပ်ဖွယ် ရလဒ်တစ်ခုရရှိခဲ့ပါသည်။</p>
+                            
+                            <p class="mb-4">ပွဲစဉ်တွင် ရှင်းသန့်ဖြူစင်ပြုံး၏ ဂိုးသစ္စာရလဒ်ဖြင့် မြန်မာအသင်းက သမိုင်းတွင်သော အနိုင်ရရှိခဲ့ပြီး အသင်းဝင်များ၏ ပြည့်စုံသော စွမ်းဆောင်နိုင်မှုကို ပြသနိုင်ခဲ့သည်။</p>
+                            
+                            <p class="mb-4">ဤအနိုင်သည် မြန်မာနိုင်ငံအမျိုးသမီးဘောလုံးအားကစားအတွက် အရေးပါသော ခြေလှမ်းတစ်ခုဖြစ်ပြီး အာရှအဆင့် ပြိုင်ပွဲများတွင် မြန်မာအသင်း၏ စွမ်းရည်ကိုြသခဲ့သည်။</p>
+                            
+                            <div class="mt-6 pt-4 border-t border-gray-200">
+                                <p class="text-sm text-gray-600 mb-2">Photo : BS MEDIA</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#todaymaubin</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#မြန်မာသတင်း</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#အမျိုးသမီးဘောလုံး</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#U17</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Articles Page -->
+        <div id="articles-page" class="page hidden">
+            <h2 class="text-3xl font-bold text-dark-green mb-6">ဆောင်းပါး</h2>
+            <div class="space-y-8">
+                <!-- Article 1 - About U Kaung Myint Than -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative w-full h-96 overflow-hidden">
+                        <img src="images/saungpar.jpg" alt="ဦးကံမြင့်သန်း" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-dark-gray mb-4">ကျနော်.....ကြားဖူးသော လူ.......@@@@</h3>
+                        <div class="text-sm text-gray-600 mb-4">အာဖျံကွီး ( မအူပင် )</div>
+                        <div class="prose max-w-none text-dark-gray leading-relaxed">
+                            <p class="mb-4">ကျနော် သူ့ကို မသိပါ....။</p>
+                            
+                            <p class="mb-4">မြင်လည်း မမြင်ဖူးပါ......။</p>
+                            
+                            <p class="mb-4">သူ့ နာမည်တော့ ကြားဖူးသည်။</p>
+                            
+                            <p class="mb-4">သို့သော်...ဆက်စပ်မူ မရှိ ၍ ရင်းနှီးမူမရှိခဲ့ပါ.....။</p>
+                            
+                            <p class="mb-4">သူနဲ့ကျနော် ပတ်သက်မူသည် ..... ဤ မျှလောက်သာ......။</p>
+                            
+                            <p class="mb-4">Covid ပြီးကာလ.... တက္ကသိုလ်ဝင်တန်း စာမေးပွဲ တွေပြန်ဖြေရမယ့် အချိန် ဝင်ခွင့်ဖောင် တင်ဖို့ ခက်ခဲမူတွေရှိခဲ့ပါတယ် ....။</p>
+                            
+                            <p class="mb-4">အဲ့အချိန်မှာပဲ.. တောမှာနေတဲ့ ကျနော့ သူငယ်ချင်းရဲ့ သား က လည်း စာမေးပွဲဖြေ ဆိုခွင့် ဖောင် တင်ဖို့ အရမ်းနောက်ကျနေလို့ အခက်အခဲ ဖြစ်နေတယ်။</p>
+                            
+                            <p class="mb-4">ကျနော်လည်း မြို့နယ်ပညာ ရေးမူးရုံးကို သွားပြီး မေး တော့ ပိတ်သွာပြီ....တဲ့ ။</p>
+                            
+                            <p class="mb-4">နောက်ဆုံး မြန်မာနိုင်ငံစာစစ်ဌာန ရန်ကုန် ကို သွာရတော့တာပေါ့။</p>
+                            
+                            <p class="mb-4">ဟိုရောက်တော့ ........ရုံးထဲဝင်ပြီး သွားမေးတာ....ပိတ်သွာပြီ...တဲ့။ ဘယ်လို ဆက်လုပ်ရမယ် မသိ ဘူး။ ကိုယ်တွေက တောသားလေ...ယောင်လည်လည် ဖြစ်နေတာပေါ့....။</p>
+                            
+                            <p class="mb-4">ရုံးရှေ့ ဆင်ဝင် အောက်မှာ ခဏ ရပ်ပြီး စဉ်းစာနေတုန်း ...... လူတစ်ယောက်က ရုံးထဲက ထွက်လာပြီး.....</p>
+                            
+                            <p class="mb-4">" ဘာဖြစ်လို့....လဲ " လို့မေးတယ်။</p>
+                            
+                            <p class="mb-4">"ဖောင်လာတင်တာ...ပိတ်သွားလို့ပါဗျာ..."</p>
+                            
+                            <p class="mb-4">"ခင်များ တို့က ဘယ်ကလဲ..."</p>
+                            
+                            <p class="mb-4">"မအူပင်က....ပါ။ "</p>
+                            
+                            <p class="mb-4">" အော်... ကျနော်လည်း မအူပင်ကပဲ.....ခဏ စောင့်ဦးနော် ..." ဟု ဆိုကာ... ရုံးအတွင်းသို့ သူပြန်ဝင်သွားသည်.....။</p>
+                            
+                            <p class="mb-4">ခဏအကြာ......ဖောင်တင်ခွင့်ရသွာပါတယ်...။ နုတ်ဆက်ဖို့ သူ့ကိုကြည့်တော့ ...မတွေ့ရတော့ ....သူ ဘယ်သူမှန်းမသိ ....။</p>
+                            
+                            <p class="mb-4">နာမည်လည်းမမေးမိ...မအူပင်က ပါ ဆိုတာပဲ သိလိုက်ရတယ်...။</p>
+                            
+                            <p class="mb-4">စိတ်ထဲ ကျေးဇူးတင်မိပါတယ်.....။</p>
+                            
+                            <p class="mb-4">ဒီအကြောင်းကို ... ကျနော့ မိတ်ဆွေ kkb ကို ရင်ဖွင့်မိမှ...သူက..</p>
+                            
+                            <p class="mb-4">" ခင်များ ကလည်း အဲ့ဒါ.... ဦးကံမြင့်သန်း ရဲ့ အကို ..... ဦးအောင်ချိုသန်း ...ပေါ့ ဗျ......"</p>
+                            
+                            <p class="mb-4">" ဦးကံမြင့်သန်း ဆိုတာ ...ဘယ်သူလဲ..."</p>
+                            
+                            <p class="mb-4">"မအူပင်သား . စစ်စစ်..... အ.ထ.က(၁) ကျောင်းသားဟောင်း ... နေပြည်တော် က အထင်ကရ မာရဝိစာရ ဘုရားကြီးကို ဦးဆောင် တည်သူ.... ပေါ့ ဗျာ......"</p>
+                            
+                            <p class="mb-4">ကျနော် ခုမှပင် ...သူ့နာမည်..... ကြားဖူး တော့သည်....။</p>
+                            
+                            <p class="mb-4">"ဟာ.... ဒီ လူ တွေ က မအူပင် သားဆိုတာနဲ့ ချက်ချင်းရအောင်ကူညီပေးတာနော်..."</p>
+                            
+                            <p class="mb-4">" ခင်များ ကလည်း သူ့ညီ... ဦးကံမြင့်သန်း .... ဆို ပိုတောင် ကူညီသေးတယ်.... သဘော ကလည်း ကောင်းပါ့ဗျာ....။</p>
+                            
+                            <p class="mb-4">အ.ထ.က( ၁) ကျောင်း ဘောလုံးကွင်းကြီးကို အုတ်တံတိုင်းခက်ဖို့ ငွေအား အကြံညဏ်အားနဲ့ ကူညီပေးခဲ့တာ...</p>
+                            
+                            <p class="mb-4">ပြီးတော့ ....အောင်ဟိတ် -ဆိတ်သာ လမ်း ဖြစ်မြောက်ရေးအတွက် ကျိုးစား အားထုတ် နေတဲ့သူ ပေါ့ ဗျာ.........</p>
+                            
+                            <p class="mb-4">စကားပြောတည်ငြိမ်သလောက် မအူပင် ကို အရမ်းချစ်တဲ့သူဗျ ... ကိုယ့်ဒေသ ကို မြတ်နိုးသူ ... ကိုယ့် ဒေသ. အပေါ် သံယောဇဉ် ကြီးသူပေါ့......"</p>
+                            
+                            <p class="mb-4">" ပြောစမ်းပါ့ ဦး ဘယ်လို ဒေသကို မြတ်နိုးသူလဲ........"</p>
+                            
+                            <p class="mb-4">ဒီလိုဗျ.......သူ ..ကျနော့ ကိုပြောဖူတယ်....။</p>
+                            
+                            <p class="mb-4">" ကျနော် တာဝန် အကြီးကြီးတွေ ထမ်းဆောင် ခဲ့ပြီးပီ....</p>
+                            
+                            <p class="mb-4">ကျနော့ ... အဖေ မြို့..........။</p>
+                            
+                            <p class="mb-4">ကျနော့ တို့ နေတဲ့ မြို့... ။</p>
+                            
+                            <p class="mb-4">ကျနော်တို့ ဒေသ.ကို..... တိုးတက်အောင် လုပ်ဖို့ပဲ ကျန်တော့တယ်....</p>
+                            
+                            <p class="mb-4">ကျနော်တို့ ဒေသ တိုးတက်အောင် ကျနော် လုပ်ရမယ်....တဲ့ ..."</p>
+                            
+                            <p class="mb-4">အဲ့လိုပြောတာ...ဗျ။</p>
+                            
+                            <p class="mb-4">ကျုပ် ဖြင့်......သူ့ကို ကြည့်ပြီး ပီတိဖြစ်လိုက် ရတာဗျာ...."</p>
+                            
+                            <p class="mb-4">ဒီလို ..... မြို့အပေါ် / ဒေသအပေါ် စွဲလန်းချစ်မြတ်နိုးသူ ..... မိမိ မြို့ ရွာ ဒေသ တိုးတက်ဖို့ အ ရေး အစဉ်တွေး.....နေသူ..... မိမိ မြို့ ရွာ ဒေသ ကို ချစ်မြတ်နိုးသူ ...... တန်ဖိုးထားသူ .... မိ မိ မြို့ရွာ ဒေသကို ကောင်းခြင်းတွေ ယူဆောင်ပေးမဲ့သူ...........</p>
+                            
+                            <p class="mb-4">ထိုသူသည်.ကား..... ကျနော် ကြားဖူးသော လူ.... ဦးကံမြင့်သန်း...ပင်ဖြစ်ပေသည်....။</p>
+                            
+                            <p class="mb-4">သူသည်..... ယခူရွေးကောက်ပွဲ တွင် ပြည်သူလွှတ်တော် နေရာမှ ဝင်ရောက် ရွေးချယ် ခံမည် ဆိုသော်...........................................</p>
+                            
+                            <div class="mt-6 pt-4 border-t border-gray-200">
+                                <p class="text-sm text-gray-600 mb-2">Photo - Today Maubin News Agency</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#todaymaubin</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#ဦးကံမြင့်သန်း</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#မအူပင်</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#ဆောင်းပါး</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 2 - About Dance and Music -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative w-full h-96 overflow-hidden">
+                        <img src="images/saungpar1.jpg" alt="မြူးမြူးလို့ပျော်" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-dark-gray mb-4">မြူးး..မြူးးး လို့ပျော်.. @@@</h3>
+                        <div class="text-sm text-gray-600 mb-4">အာဖျံကွီး (မအူပင်)</div>
+                        <div class="prose max-w-none text-dark-gray leading-relaxed">
+                            <p class="mb-4">ဝါသနာဆိုတာ တားမရဘူး ဆိုတဲ့..... စကားက .. သိတ်မှန်တဲ့....စကားဗျ...။</p>
+                            
+                            <p class="mb-4">ကျုပ်ဆို.... ငယ်ငယ်ထဲက ဆိုင်းသံကြားရင် မနေနိုင်ပေါင်ထဲမှာ ပါတာဗျ....။</p>
+                            
+                            <p class="mb-4">ဆိုင်းသံကြားရင် ကို...က ချင်နေရော... မှတ်မိသေတယ် ရွာဦးကျောင်း အလှူပွဲမှာ ဆိုင်း ပါမယ် ဆိုပြီး မပါလို့ အသံချဲ့စက် ဖွင့်တဲ့ သရက်ပင်အောက်မှာ ကွေးနေအောင် ကို...ကတာ... မနက်စာ ထမင်းပါ ငတ်ရော ...။</p>
+                            
+                            <p class="mb-4">ဒီလို....ဒီလို...... ကျနော့ ဝါသနာကို က....။</p>
+                            
+                            <p class="mb-4">ခု အသက်ကလေးရလာတော့ .... ပတ်ဝန်းကျင်ကပို အဆင်ပြေလာတယ်.... ခေတ်မီ လာတယ်ပြောရမလား ကိုနေတဲ့မြို့ကလဲ ခရိုင်မြို့လေ... ။</p>
+                            
+                            <p class="mb-4">ဒီ ရာသီ ( စတုဒီသာ/ကထိန် ) ပွဲနီးလာရင်.... ဝါးနဲ့ကျွဲခေါင်းပုံစံ ချိုးထားတဲ့ ကျွဲရုပ်ထဲ ဝင်ပြီးကတာပဲ... ... တကယ်လဲ ကလို့ကောင်းတယ်လေ.....။</p>
+                            
+                            <p class="mb-4">လိုက်ထရက် ကား/ထော်လာဂျီ ပေါ်က ဆောင်းဘောက်က အသံကုန်ဖွင့်ထားတာ...ဆို တော့ ... တကယ်ကို မမောနိုင်ဘူး က လို့ကောင်းနေရော......။</p>
+                            
+                            <p class="mb-4">ကျုပ်ဆို ခန ခန ...ဝင် ...ဝင်ပြီးကတာ.... ကျုပ်က .... စက်ဆရာကိုပြောထားတယ် လေ..... အသံကျယ်ပီး မြူးဖို့ပဲလိုတယ် လို့ ..... က ဖို့ ကြ ကျုပ်တာဝန်ထား......။</p>
+                            
+                            <p class="mb-4">ဆေးရုံ ဆေးခန်း အရှေ့တို့ သက်ကြီးရွယ်အို အိမ်ရှေ့တို့... တရားရိပ်သာရှေ့တို့... ... ဘာတို့မသိဘူး အချိန်မတော်တာ တို့ ဘာတို့...ညာတို့ မသိဘူး တခြားအဖွဲ့က စက်သံထက် ပိုကျယ်ရင်ရပြီလို့... ပြောထားတာဗျ....။</p>
+                            
+                            <p class="mb-4">ဟုတ်တယ်လေ..... ကျုပ်တို့အဖွဲ့ တစ်ဖွဲ့ထဲ မှ မဟုတ်တာ.... အခြား ကျွဲ အဖွဲ့တွေရော...တိုးနရား အဖွဲ့တွေရော အစုံ...အစုံ... ရှိတာဗျ.....ကျုပ်က ဘယ်အညံ့ ခံမလဲ....</p>
+                            
+                            <p class="mb-4">စက်သံက...ကျယ်လေကောင်းလေ.... ကျယ်ကျယ်ဖွင့် မှ လူသိမှာပေါ့ဗျ....။ ဆောင်းဘောက် တောင် အားမရလို့...အသံချဲ့စက်ပါ တပ်ထားတာ ဗျ .... ရှင်းပလား</p>
+                            
+                            <p class="mb-4">"ဘာလဲ...နားမခံနိုင်ဘူးလား ရွာပြင်ထွက်နေလိုက်ပေါ့...ကျုပ်တို့က..ကုသိုလ်ရေး လုပ်နေတာလေ...သိဘူးလား စိတ်မရှည်ချင်တော့ဘူး ပြောရတာ ...မောတယ်...။</p>
+                            
+                            <p class="mb-4">အော်.... ဒါနဲ့.... ကျုပ်ဝါသနာက တားမရ လို့ ကျုပ်ဆက် ကလိုက်ဦးမယ်....ဗျို့..."</p>
+                            
+                            <p class="mb-4">" ဝေ့......စက်ဆရာရေ့... စက်သံ အသံကုန်သာ ဖွင့် နော်....ဟို.....သီချင်းဖွင့်ဗျာ....."</p>
+                            
+                            <p class="mb-4">" မကရဘူး လို့ ဘယ်သူက ပြောလဲ...."</p>
+                            
+                            <p class="mb-4">"မမေားနိုင်ပါဘူး မပမ်းနိုင်ပါဘူး မြူးမြူးလို့ပျော်....... မြူးး မြူးး လိုပျော်........"</p>
+                            
+                            <p class="mb-4">ပြောင် သနောင်...သနောင် နးးပလို့ချိ........။</p>
+                            
+                            <div class="mt-6 pt-4 border-t border-gray-200">
+                                <p class="text-sm text-gray-600 mb-2">Photo - Today Maubin News Agency</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#todaymaubin</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#မြူးမြူးလို့ပျော်</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#ဆိုင်းသံ</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#ဆောင်းပါး</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 3 - About Elections -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative w-full h-96 overflow-hidden">
+                        <img src="images/saungpar3.jpg" alt="မအူပင်တံတား" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-dark-gray mb-4">ရွေးကောက်ပွဲ သည် ---- မြို့အတွက် ဘယ်လောက်အရေး ပါတယ် ဆိုတာ</h3>
+                        <div class="text-sm text-gray-600 mb-4">သစ္စာ မအူပင်</div>
+                        <div class="prose max-w-none text-dark-gray leading-relaxed">
+                            <p class="mb-4">စဉ်းစား တတ်သူတွေ သိကြပါတယ် ဘယ်သူ တွေက ဖွံဖြိုးတိုးတက်ရေး ဘာတွေဆောင်ရွက် ပေးလေမလဲ မျော်လင့် လို့ရတဲ့ အခြေအနေပါ</p>
+                            
+                            <p class="mb-4">မြို့ပြ နဲ့ ကျေးလက် လမ်းပမ်းဆက်သွယ်ရေး တွေပို၍ ပို၍ ကောင်းမွန်လာရင် မြို့ ရဲ့ လမ်းဘေးကွမ်းယာ/ဆေးလိပ်ဆိုင်လေးကအစ စျေးရောင်းရပါတယ်</p>
+                            
+                            <p class="mb-4">စားသောက်ဆိုင် - လူသုံးကုန် - စျေးသည်စကားနဲ့ပြောရရင် တောတက်ရင် စျေးရောင်းကောင်းတယ်လေ</p>
+                            
+                            <p class="mb-4">ရွာကနေ မြို့ကိုလာဘို့ဆိုတာ လမ်းသာမှ လာလို့အဆင်ပြေကြမှာ ပါ</p>
+                            
+                            <p class="mb-4">ကျေးလက် ရွာမှလူနာ မအူပင် ဆေးရုံကြီးကို အချိန်မှီ ရောက်ရေးသည် လမ်းကောင်းပါမှအသက်ရှင်ပါတယ် -</p>
+                            
+                            <p class="mb-4">လမ်းဆိုး လမ်းပျက် သွားလာရေးခက်ခဲလို့ မသေသင့်ဘဲသေသွားကြသူတွေ အများကြီး ပါ</p>
+                            
+                            <p class="mb-4">ဒါမျိုး တွေက တကယ်ကြုံ နေရတာ အခွင့် အလမ်းတွေ ကို ရရေးသည် မိမိ အခွင့်အရေး မဲပေးခွင့် ကို အသုံး ချရမှာ ဖြစ်ပါတယ် - မဲပေး ကြ မယ် လေ</p>
+                            
+                            <p class="mb-4">ဖွံဖြိုး တဲ့ ဒေသတခု ဖြစ်လာရေး သည် ----- မေတ္တာ ပေး ရင် မေတ္တာပြန်ရပါတယ် -</p>
+                            
+                            <p class="mb-4">မဲစာရင်း မှာ မိမိ အမည် စာရင်း ကို သွားကြည့်ကြပါလို့ တိုက်တွန်းပါတယ်</p>
+                            
+                            <p class="mb-4">ဆန္ဒ မဲ ပေး ခွင့် ရှိသူတိုင်း ကိုယ့်ဒေသအရေး အတွက် ဆန္ဒ မဲ ပေးကြပါစို့ ။</p>
+                            
+                            <p class="mb-4">ထီထိုး မှ သာ ထီပေါက်တဲ့ ခံစားခွင့် ကိုရမှာဖြစ်သလို ကိုယ့်ဒေသအရေး အတွက် ကိုယ့်မဲပေးခွင့်ကို ဆောင်ရွက် မှာသာ တာဝန်ကြေမှာပါ ။</p>
+                            
+                            <p class="mb-4">လေးစားစွာဖြင့် သစ္စာ မအူပင်</p>
+                            
+                            <div class="mt-6 pt-4 border-t border-gray-200">
+                                <p class="text-sm text-gray-600 mb-2">Photo - Today Maubin News Agency</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#todaymaubin</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#ရွေးကောက်ပွဲ</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#မအူပင်တံတား</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#ဆောင်းပါး</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Us Page -->
+        <div id="about-page" class="page hidden">
+            <h2 class="text-3xl font-bold text-dark-green mb-6">သတင်းဌာနအကြောင်း</h2>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <p class="text-dark-gray mb-4">Today Maubin News Agency ကို 2025ခုနှစ် အောက်တိုဘာလမှာစတင်တည်ထောင်ခဲ့ပြီး မအူပင်မြို့တွင်အခြေစိုက်သောသတင်းဌာန တစ်ခုဖြစ်ကာ မအူပင်မြို့အပါအဝင် ဒေသတွင်းသတင်းများ ၊ နိုင်ငံတကာသတင်းများ ၊ အားကစာသတင်းများ ၊ ဆောင်းပါးများ ကိုပြည်သူ့များထံ မှန်ကန်စွာ သတင်းမီဒီယာကျင့်ဝတ်နှင့်အညီ ဖော်ပြပေးနေသောသတင်းဌာနတစ်ဖြစ်ပါသည်။</p>
+                
+                <div class="mt-6 pt-4 border-t border-gray-200">
+                    <h3 class="text-xl font-bold text-dark-green mb-4">ဆက်သွယ်ရန်</h3>
+                    <div class="space-y-2">
+                        <div class="flex">
+                            <span class="font-semibold text-dark-gray w-24 text-right pr-2">Email:</span>
+                            <span class="text-dark-gray">todaymaubin620@gmail.com</span>
+                        </div>
+                        <div class="flex">
+                            <span class="font-semibold text-dark-gray w-24 text-right pr-2">Website:</span>
+                            <span class="text-dark-gray">www.todaymaubinnewsagency.com</span>
+                        </div>
+                        <div class="flex">
+                            <span class="font-semibold text-dark-gray w-24 text-right pr-2">Viber:</span>
+                            <span class="text-dark-gray">+959670001774</span>
+                        </div>
+                        <div class="flex">
+                            <span class="font-semibold text-dark-gray w-24 text-right pr-2">Tel:</span>
+                            <span class="text-dark-gray">+959670001774</span>
+                        </div>
+                        <div class="flex">
+                            <span class="font-semibold text-dark-gray w-24 text-right pr-2">Address:</span>
+                            <span class="text-dark-gray">No : 75 (၈)လမ်းတာပြင် ၊ ၅ ရပ်ကွက် ၊ မအူပင်ခရိုင် ၊ မအူပင်မြို့ ၊ ဧရာဝတီတိုင်းဒေသကြီး</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <!-- Main Footer Content -->
+        <div class="container mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="lg:col-span-2">
+                    <div class="mb-6 flex items-center space-x-4">
+                        <img src="images/weblogo.png" alt="Today Maubin News Agency" class="h-12 w-auto" style="filter: brightness(1.3) contrast(1.2) saturate(1.4);">
+                        <img src="images/weblogo1.png" alt="Today Maubin News Agency" class="h-12 w-auto" style="filter: brightness(1.3) contrast(1.2) saturate(1.4);">
+                </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Today Maubin News Agency</h3>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Today Maubin News Agency ကို 2025ခုနှစ် အောက်တိုဘာလမှာစတင်တည်ထောင်ခဲ့ပြီး မအူပင်မြို့တွင်အခြေစိုက်သောသတင်းဌာန တစ်ခုဖြစ်ကာ မအူပင်မြို့အပါအဝင် ဒေသတွင်းသတင်းများ ၊ နိုင်ငံတကာသတင်းများ ၊ အားကစာသတင်းများ ၊ ဆောင်းပါးများ ကိုပြည်သူ့များထံ မှန်ကန်စွာ သတင်းမီဒီယာကျင့်ဝတ်နှင့်အညီ ဖော်ပြပေးနေသောသတင်းဌာနတစ်ဖြစ်ပါသည်။
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg">
+                            ယုံကြည်စိတ်ချရသော သတင်းဌာန
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-6 border-b border-green-400 pb-2">လင့်များ</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="nav-link text-gray-300 hover:text-green-300 transition-colors duration-300 flex items-center" data-page="home">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-3 shadow-sm"></span>ပင်မစာမျက်နှာ
+                        </a></li>
+                        <li><a href="#" class="nav-link text-gray-300 hover:text-green-300 transition-colors duration-300 flex items-center" data-page="local">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-3 shadow-sm"></span>ဒေသတွင်း‌သတင်းများ
+                        </a></li>
+                        <li><a href="#" class="nav-link text-gray-300 hover:text-green-300 transition-colors duration-300 flex items-center" data-page="international">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-3 shadow-sm"></span>နိုင်ငံတကာသတင်း
+                        </a></li>
+                        <li><a href="#" class="nav-link text-gray-300 hover:text-green-300 transition-colors duration-300 flex items-center" data-page="sports">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-3 shadow-sm"></span>အားကစားသတင်း
+                        </a></li>
+                        <li><a href="#" class="nav-link text-gray-300 hover:text-green-300 transition-colors duration-300 flex items-center" data-page="articles">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-3 shadow-sm"></span>ဆောင်းပါး
+                        </a></li>
+                        <li><a href="#" class="nav-link text-gray-300 hover:text-green-300 transition-colors duration-300 flex items-center" data-page="about">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-3 shadow-sm"></span>သတင်းဌာနအကြောင်း
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-6 border-b border-green-400 pb-2">ဆက်သွယ်ရန်</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-green-400 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-sm">
+                                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                                </svg>
+                </div>
+                            <div>
+                                <p class="text-gray-300 text-sm">No : 75 (၈)လမ်းတာပြင် ၊ ၅ ရပ်ကွက် ၊ မအူပင်ခရိုင် ၊ မအူပင်မြို့ ၊ ဧရာဝတီတိုင်းဒေသကြီး</p>
+            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 bg-green-400 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-gray-300 text-sm">todaymaubin620@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 bg-green-400 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-gray-300 text-sm">www.todaymaubinnewsagency.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 bg-green-400 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-gray-300 text-sm">+959670001774</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Bottom -->
+        <div class="border-t border-gray-800 bg-gray-950">
+            <div class="container mx-auto px-6 py-6">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="text-gray-400 text-sm">
+                        © ၂၀၂၅ Today Maubin News Agency။ လက်မှတ်ရပါသည်။
+                    </div>
+                    <div class="flex items-center space-x-6 text-sm text-gray-400">
+                        <span>ဒေသတွင်း သတင်းများ</span>
+                        <span>•</span>
+                        <span>နိုင်ငံတကာ သတင်းများ</span>
+                        <span>•</span>
+                        <span>အားကစား သတင်းများ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            // Show home page by default
+            showPage('home');
+            
+            // Navigation link click handlers
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.getAttribute('data-page');
+                    showPage(page);
+                    
+                    // Update active link
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // Mobile menu toggle
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Function to show a specific page
+            function showPage(pageName) {
+                // Hide all pages
+                pages.forEach(page => {
+                    page.classList.add('hidden');
+                });
+                
+                // Show the requested page
+                document.getElementById(pageName + '-page').classList.remove('hidden');
+            }
+            
+            // Image Carousel functionality for multiple carousels
+            const carouselStates = {
+                'image-carousel': { currentSlide: 0, totalSlides: 3 },
+                'image-carousel-2': { currentSlide: 0, totalSlides: 3 },
+                'image-carousel-3': { currentSlide: 0, totalSlides: 3 }
+            };
+            
+            // Function to update carousel position
+            function updateCarousel(carouselId) {
+                const carousel = document.getElementById(carouselId);
+                const state = carouselStates[carouselId];
+                if (!carousel || !state) return;
+                
+                carousel.style.transform = `translateX(-${state.currentSlide * 100}%)`;
+                
+                // Update dots for this carousel
+                let dotsSelector = '';
+                if (carouselId === 'image-carousel-2') {
+                    dotsSelector = '.carousel-dot-2';
+                } else if (carouselId === 'image-carousel-3') {
+                    dotsSelector = '.carousel-dot-3';
+                } else {
+                    dotsSelector = '.carousel-dot';
+                }
+                const dots = document.querySelectorAll(dotsSelector);
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === state.currentSlide);
+                    dot.classList.toggle('bg-white', index === state.currentSlide);
+                    dot.classList.toggle('bg-white/70', index !== state.currentSlide);
+                });
+            }
+            
+            // Next slide function
+            function nextSlide(carouselId) {
+                const state = carouselStates[carouselId];
+                if (!state) return;
+                state.currentSlide = (state.currentSlide + 1) % state.totalSlides;
+                updateCarousel(carouselId);
+            }
+            
+            // Previous slide function
+            function prevSlide(carouselId) {
+                const state = carouselStates[carouselId];
+                if (!state) return;
+                state.currentSlide = (state.currentSlide - 1 + state.totalSlides) % state.totalSlides;
+                updateCarousel(carouselId);
+            }
+            
+            // Initialize carousel
+            function initCarousel(carouselId) {
+                const carousel = document.getElementById(carouselId);
+                let prevBtnSelector = 'prev-btn';
+                let nextBtnSelector = 'next-btn';
+                let dotsSelector = '.carousel-dot';
+                
+                if (carouselId === 'image-carousel-2') {
+                    prevBtnSelector = 'prev-btn-2';
+                    nextBtnSelector = 'next-btn-2';
+                    dotsSelector = '.carousel-dot-2';
+                } else if (carouselId === 'image-carousel-3') {
+                    prevBtnSelector = 'prev-btn-3';
+                    nextBtnSelector = 'next-btn-3';
+                    dotsSelector = '.carousel-dot-3';
+                }
+                
+                const prevBtn = document.getElementById(prevBtnSelector);
+                const nextBtn = document.getElementById(nextBtnSelector);
+                const dots = document.querySelectorAll(dotsSelector);
+                
+                if (!carousel) return;
+                
+                // Event listeners for carousel
+                if (nextBtn) nextBtn.addEventListener('click', () => nextSlide(carouselId));
+                if (prevBtn) prevBtn.addEventListener('click', () => prevSlide(carouselId));
+                
+                // Dot navigation
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        carouselStates[carouselId].currentSlide = index;
+                        updateCarousel(carouselId);
+                    });
+                });
+                
+                // Auto-play carousel
+                setInterval(() => nextSlide(carouselId), 5000);
+                
+                // Touch/swipe support for mobile
+                let startX = 0;
+                let endX = 0;
+                
+                carousel.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+                
+                carousel.addEventListener('touchend', (e) => {
+                    endX = e.changedTouches[0].clientX;
+                    handleSwipe(carouselId);
+                });
+                
+                function handleSwipe(carouselId) {
+                    const threshold = 50;
+                    const diff = startX - endX;
+                    
+                    if (Math.abs(diff) > threshold) {
+                        if (diff > 0) {
+                            nextSlide(carouselId); // Swipe left - next slide
+                        } else {
+                            prevSlide(carouselId); // Swipe right - previous slide
+                        }
+                    }
+                }
+                
+                // Initialize first slide
+                updateCarousel(carouselId);
+            }
+            
+            // Initialize all carousels
+            initCarousel('image-carousel');
+            initCarousel('image-carousel-2');
+            initCarousel('image-carousel-3');
+        });
+    </script>
+</body>
+</html>
