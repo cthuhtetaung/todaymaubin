@@ -71,6 +71,28 @@
             -webkit-mask-size: contain;
             mask-size: contain;
         }
+        /* Line clamp utility for text truncation */
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        /* Mobile responsive adjustments */
+        @media (max-width: 640px) {
+            .news-list {
+                gap: 1.5rem;
+            }
+            .pagination-controls {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            .pagination-controls button {
+                min-width: 2.5rem;
+                padding: 0.5rem 0.75rem;
+                font-size: 0.875rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-light-gray">
@@ -108,18 +130,19 @@
                     <a href="#" class="nav-link text-dark-green hover:text-green-600" data-page="about">သတင်းဌာနအကြောင်း</a>
                 </div>
             </div>
+            <div class="pagination-controls hidden mt-8 flex justify-center items-center space-x-2"></div>
         </div>
     </header>
 
     <!-- Main Content Area -->
-    <main class="container mx-auto px-6 py-12 page-content">
+    <main class="container mx-auto px-4 sm:px-6 py-6 sm:py-12 page-content">
         <!-- Home Page -->
         <div id="home-page" class="page">
             <!-- Hero Section -->
             <section class="mb-16">
                 <div class="relative w-full">
                     <!-- Video Background -->
-                    <div class="relative h-[70vh] min-h-[500px] max-h-[700px]">
+                    <div class="relative h-[50vh] sm:h-[60vh] md:h-[70vh] min-h-[400px] sm:min-h-[500px] max-h-[700px]">
                         <video autoplay muted loop playsinline class="w-full h-full object-cover">
                             <source src="images/mal.mp4" type="video/mp4">
                             သင်၏ဘရောက်ဇာသည် ဗီဒီယိုကိုထောက်ပံ့မပေးပါ။
@@ -130,30 +153,30 @@
                         
                         <!-- Hero Content with Transparent Text -->
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="container mx-auto px-8 text-center">
+                            <div class="container mx-auto px-4 sm:px-6 md:px-8 text-center">
                                 <div class="max-w-3xl">
                                     <!-- Main Headline -->
-                                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight drop-shadow-lg">
+                                    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 leading-tight drop-shadow-lg">
                                         Today Maubin News Agency
                                     </h1>
                                     
                                     <!-- Subtitle -->
-                                    <p class="text-xl md:text-2xl text-white mb-6 leading-relaxed drop-shadow-lg">
+                                    <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-4 sm:mb-6 leading-relaxed drop-shadow-lg">
                                         မအူပင်မြို့၏ ယုံကြည်စိတ်ချရသော သတင်းဌာန
                                     </p>
                                     
                                     <!-- Description -->
-                                    <p class="text-base md:text-lg text-white/90 mb-8 leading-relaxed drop-shadow-lg">
+                                    <p class="text-sm sm:text-base md:text-lg text-white/90 mb-6 sm:mb-8 leading-relaxed drop-shadow-lg px-2">
                                         ဒေသတွင်း၊ နိုင်ငံတကာ သတင်းများနှင့် အားကစားသတင်းများကို 
                                         တိကျမှန်ကန်စွာ ပေးပို့ပေးနေပါသည်။
                                     </p>
                                     
                                     <!-- Call to Action Buttons -->
-                                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                                        <a href="#" class="nav-link bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold text-center transition-all duration-300 transform hover:scale-105 shadow-lg" data-page="local">
+                                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-2">
+                                        <a href="#" class="nav-link bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base text-center transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto" data-page="local">
                                             ဒေသတွင်းသတင်းများ
                                         </a>
-                                        <a href="#" class="nav-link bg-transparent hover:bg-white/20 text-white border-2 border-white hover:border-green-300 px-8 py-3 rounded-lg font-semibold text-center transition-all duration-300 shadow-lg" data-page="international">
+                                        <a href="#" class="nav-link bg-transparent hover:bg-white/20 text-white border-2 border-white hover:border-green-300 px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold text-sm sm:text-base text-center transition-all duration-300 shadow-lg w-full sm:w-auto" data-page="international">
                                             နိုင်ငံတကာသတင်း
                                         </a>
                                     </div>
@@ -178,53 +201,53 @@
 
             <!-- Latest News -->
             <section class="py-8">
-                <h2 class="text-2xl font-bold text-dark-green mb-8">နောက်ဆုံးသတင်းများ</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-                    <!-- News Card 1 - Garbage Cleanup -->
+                <h2 class="text-2xl sm:text-3xl font-bold text-dark-green mb-6 sm:mb-8">နောက်ဆုံးသတင်းများ</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
+                    <!-- News Card 1 - USDP Delegates Meet Residents -->
                     <div class="news-card rounded-lg shadow-md overflow-hidden">
                         <div class="relative w-full h-48 overflow-hidden">
-                            <img src="images/daythatwin.png" alt="မအူပင်မြို့ အ.ထ.က (၁)ကျောင်းအနီးအမှိုက်ပုံရှင်းလင်း" class="w-full h-full object-cover">
+                            <img src="images/daythatwin9.jpg" alt="ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီမှ ကိုယ်စားလှယ်လောင်းများ အောင်ဟိတ်ကျေးရွာအနီးတဝိုက်ရှိပြည်သူများနှင့်တွေ့ဆုံ" class="w-full h-full object-cover">
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-dark-gray mb-4">မအူပင်မြို့ အ.ထ.က (၁)ကျောင်းအနီးအမှိုက်ပုံရှင်းလင်း</h3>
-                            <div class="text-sm text-gray-600 mb-4">အောက်တိုဘာ - ၂၄</div>
-                            <a href="#" class="nav-link text-dark-green font-semibold hover:underline" data-page="local">ပိုမိုသိရှိရန်</a>
+                        <div class="p-4 sm:p-6">
+                            <h3 class="text-base sm:text-lg md:text-xl font-bold text-dark-gray mb-3 sm:mb-4 line-clamp-3">ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီမှ ကိုယ်စားလှယ်လောင်းများ အောင်ဟိတ်ကျေးရွာအနီးတဝိုက်ရှိ ပြည်သူများနှင့်တွေ့ဆုံ</h3>
+                            <div class="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">ပြည့်ဖြိုးပိုင် (မအူပင်) - နိုဝင်ဘာ ၁၁</div>
+                            <a href="#" class="nav-link text-dark-green font-semibold hover:underline text-sm sm:text-base" data-page="local">ပိုမိုသိရှိရန်</a>
                         </div>
                     </div>
 
-                    <!-- News Card 2 - Road Damage -->
+                    <!-- News Card 2 - Power Outages in Maubin -->
                     <div class="news-card rounded-lg shadow-md overflow-hidden">
                         <div class="relative w-full h-48 overflow-hidden">
-                            <img src="images/daythatwin3.png" alt="ထန်းပင်ကွေ့အရှေ့ ဆည်မြောင်းတာဘောင်ပေါ်ရှိ ကိုယ်ထူကိုယ်ထကွန်ကရစ်လမ်းပျက်စီး" class="w-full h-full object-cover">
+                            <img src="images/daythatwin13.jpg" alt="မအူပင်မြို့တွင် ယခုရက်ပိုင်း လျှပ်စစ်မီးအချိန်ကြာမြင့်စွာပြတ်တောက်နေ" class="w-full h-full object-cover">
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-dark-gray mb-4">ထန်းပင်ကွေ့အရှေ့ ဆည်မြောင်းတာဘောင်ပေါ်ရှိ ကိုယ်ထူကိုယ်ထကွန်ကရစ်လမ်းပျက်စီး</h3>
-                            <div class="text-sm text-gray-600 mb-4">အောက်တိုဘာ (၂၁)</div>
-                            <a href="#" class="nav-link text-dark-green font-semibold hover:underline" data-page="local">ပိုမိုသိရှိရန်</a>
+                        <div class="p-4 sm:p-6">
+                            <h3 class="text-base sm:text-lg md:text-xl font-bold text-dark-gray mb-3 sm:mb-4 line-clamp-3">မအူပင်မြို့တွင် ယခုရက်ပိုင်း လျှပ်စစ်မီးအချိန်ကြာမြင့်စွာပြတ်တောက်နေ</h3>
+                            <div class="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">နိုဝင်ဘာ - ၇ - မအူပင်</div>
+                            <a href="#" class="nav-link text-dark-green font-semibold hover:underline text-sm sm:text-base" data-page="local">ပိုမိုသိရှိရန်</a>
                         </div>
                     </div>
 
-                    <!-- News Card 3 - Boiler Explosion -->
+                    <!-- News Card 3 - Solar Street Lights Installation -->
                     <div class="news-card rounded-lg shadow-md overflow-hidden">
                         <div class="relative w-full h-48 overflow-hidden">
-                            <img src="images/daythatwin6.png" alt="ဆန်စက်ဘွိုင်လာအိုးပေါက်ကွဲမှု" class="w-full h-full object-cover">
+                            <img src="images/daythatwin14.jpg" alt="မအူပင်မြို့တွင် ညဘက် လမ်းသွားလမ်းလာများအဆင်ပြေရန် ဆိုလာလမ်းမီးများတပ်ဆင်" class="w-full h-full object-cover">
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-dark-gray mb-4">ဆန်စက်ဘွိုင်လာအိုးပေါက်ကွဲမှု ကြောင့် ဖျာပုံတွင် အမျိုးသားတစ်ဦး သေဆုံး</h3>
-                            <div class="text-sm text-gray-600 mb-4">အောက်တိုဘာ (၂၁)</div>
-                            <a href="#" class="nav-link text-dark-green font-semibold hover:underline" data-page="local">ပိုမိုသိရှိရန်</a>
+                        <div class="p-4 sm:p-6">
+                            <h3 class="text-base sm:text-lg md:text-xl font-bold text-dark-gray mb-3 sm:mb-4 line-clamp-3">မအူပင်မြို့တွင် ညဘက် လမ်းသွားလမ်းလာများအဆင်ပြေရန် ဆိုလာလမ်းမီးများတပ်ဆင်</h3>
+                            <div class="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">နိုဝင်ဘာ (၆) - မအူပင်</div>
+                            <a href="#" class="nav-link text-dark-green font-semibold hover:underline text-sm sm:text-base" data-page="local">ပိုမိုသိရှိရန်</a>
                         </div>
                     </div>
 
-                    <!-- News Card 4 - USDP Election Promise -->
+                    <!-- News Card 4 - Road Repair -->
                     <div class="news-card rounded-lg shadow-md overflow-hidden">
                         <div class="relative w-full h-48 overflow-hidden">
-                            <img src="images/last2.jpg" alt="USDP ပါတီမှ မအူပင်မြို့နယ် အမျိုးသားလွှတ်တော်ကိုယ်စားလှယ်လောင်း ဦးအောင်ကျော်မင်း" class="w-full h-full object-cover" style="object-position: center top;">
+                            <img src="images/daythatwin11.jpg" alt="မအူပင်မြို့နှင့် ကျွဲဒုံးကျေးရွာသို့ဆက်သွယ်ထားသည့် အောင်ဟိတ် - ဆိပ်သာ - ကျွဲဒုံးလမ်းပြုပြင်မှုစတင်" class="w-full h-full object-cover">
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-dark-gray mb-4">လုပ်ပိုင်ခွင့်ကို အလွဲသုံးစားပြုပြီး ဘယ်သူတစ်ဦးတစ်ယာက်ကိုမှ မညစ်ဘူး မရစ်ဘူး အနိုင်မကျင့်ဘူးလို့ USDP ပါတီမှ မအူပင်မြို့နယ် အမျိုးသားလွှတ်တော်ကိုယ်စားလှယ်လောင်း ဦးအောင်ကျော်မင်းက ပြည်သူသို့ကတိပေး</h3>
-                            <div class="text-sm text-gray-600 mb-4">သော်ဇင်ခန့် (မအူပင်) - အောက်တိုဘာ - ၂၈</div>
-                            <a href="#" class="nav-link text-dark-green font-semibold hover:underline" data-page="local">ပိုမိုသိရှိရန်</a>
+                        <div class="p-4 sm:p-6">
+                            <h3 class="text-base sm:text-lg md:text-xl font-bold text-dark-gray mb-3 sm:mb-4 line-clamp-3">မအူပင်မြို့နှင့် ကျွဲဒုံးကျေးရွာသို့ဆက်သွယ်ထားသည့် အောင်ဟိတ် - ဆိပ်သာ - ကျွဲဒုံးလမ်းပြုပြင်မှုစတင်</h3>
+                            <div class="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">ပြည့်ဖြိုးပိုင် (မအူပင်) - နိုဝင်ဘာ ၈</div>
+                            <a href="#" class="nav-link text-dark-green font-semibold hover:underline text-sm sm:text-base" data-page="local">ပိုမိုသိရှိရန်</a>
                         </div>
                     </div>
 
@@ -233,10 +256,10 @@
                         <div class="relative w-full h-48 overflow-hidden">
                             <img src="images/last.jpg" alt="ပြည်ထောင်စုရွေးကောက်ပွဲကော်မရှင်" class="w-full h-full object-cover" style="object-position: center;">
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-dark-gray mb-4">၂၀၂၆ ခုနှစ် ဇန်နဝါရီ ၁၁ ရက်တွင် ရွေးကောက်ပွဲ အပိုင်း ( ၂ )ကိုမြို့နယ် ၁၀၀ တွင် ကျင်ပမည်</h3>
-                            <div class="text-sm text-gray-600 mb-4">အောက်တိုဘာ - ၂၈</div>
-                            <a href="#" class="nav-link text-dark-green font-semibold hover:underline" data-page="local">ပိုမိုသိရှိရန်</a>
+                        <div class="p-4 sm:p-6">
+                            <h3 class="text-base sm:text-lg md:text-xl font-bold text-dark-gray mb-3 sm:mb-4 line-clamp-3">၂၀၂၆ ခုနှစ် ဇန်နဝါရီ ၁၁ ရက်တွင် ရွေးကောက်ပွဲ အပိုင်း ( ၂ )ကိုမြို့နယ် ၁၀၀ တွင် ကျင်ပမည်</h3>
+                            <div class="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">အောက်တိုဘာ - ၂၈</div>
+                            <a href="#" class="nav-link text-dark-green font-semibold hover:underline text-sm sm:text-base" data-page="local">ပိုမိုသိရှိရန်</a>
                         </div>
                     </div>
                 </div>
@@ -245,10 +268,167 @@
 
         <!-- Local News Page -->
         <div id="local-page" class="page hidden">
-            <h2 class="text-3xl font-bold text-dark-green mb-6">ဒေသတွင်း‌သတင်းများ</h2>
-            <div class="space-y-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-dark-green mb-4 sm:mb-6">ဒေသတွင်း‌သတင်းများ</h2>
+            <div class="space-y-6 sm:space-y-8 news-list" data-page="local">
+                <!-- Article - Power Outages in Maubin -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
+                    <div class="relative w-full h-48 sm:h-64 md:h-80 overflow-hidden">
+                        <img src="images/daythatwin13.jpg" alt="မအူပင်မြို့တွင် ယခုရက်ပိုင်း လျှပ်စစ်မီးအချိန်ကြာမြင့်စွာပြတ်တောက်နေ" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4 sm:p-6 md:p-8">
+                        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-dark-gray mb-3 sm:mb-4">မအူပင်မြို့တွင် ယခုရက်ပိုင်း လျှပ်စစ်မီးအချိန်ကြာမြင့်စွာပြတ်တောက်နေ</h3>
+                        <div class="text-sm text-gray-600 mb-4">နိုဝင်ဘာ - ၇ - မအူပင်</div>
+                        <div class="prose max-w-none text-dark-gray leading-relaxed">
+                            <p class="mb-4">ဧရာဝတီတိုင်းဒေသကြီး မအူပင်မြို့တွင် နိုဝင်ဘာလ (၆) ရက်နေ့မှ စတင်ကာ လျှပ်စစ်မီးအချိန်ကြာမြင့်စွာ ပြတ်တောက်မှုများ ဖြစ်ပေါ်နေပြီး မြို့နေ ပြည်သူများအတွက် အခက်အခဲများစွာ ဖြစ်ပေါ်နေကြောင်း သိရသည်။</p>
+
+                            <p class="mb-4">"မီးက မနေ့ညကလည်း တစ်ညလုံးပြတ်တယ်၊ ဒီမနက်လာတော့လည်း ခဏခဏပြတ်တယ်၊ မီးပျက်တော့ ရေအတွက် အခက်အခဲဖြစ်သလို၊ တခြားအလုပ်အကိုင်တွေအတွက်လည်း အခက်အခဲဖြစ်နေတာပေါ့ နောက်ပြီး အဝေးသင်တက္ကသိုလ် ကျောင်းသားကျောင်းသူတွေ စာမေးပွဲဖြေရက်နီးတော့ စာကျက်ရတာလည်း အခက်အခဲရှိပါတယ်" ဟု မအူပင်မြို့ခံ တစ်ဦးက Today Maubin သတင်းဌာနသို့ ပြောသည်။</p>
+
+                            <p class="mb-4">မအူပင်မြို့တွင် ယခုလို လျှပ်စစ်မီး အချိန်ကြာမြင့်စွာ ပြတ်တောက်မှုများ ဖြစ်ပေါ်နေသလို ကျေးရွာများတွင်လည်း ပြတ်တောက်လျှက်ရှိကြောင်း သိရသည်။</p>
+
+                            <div class="mt-6 pt-4 border-t border-gray-200">
+                                <p class="text-sm text-gray-600 mb-2">Photo - Today Maubin News Agency</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#todaymaubinnewsagency</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#LocalNews</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#လျှပ်စစ်မီးပြတ်တောက်</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article - Solar Street Lights Installation -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
+                    <div class="relative w-full h-48 sm:h-64 md:h-80 overflow-hidden">
+                        <div id="image-carousel-6" class="flex transition-transform duration-500 ease-in-out">
+                            <div class="w-full h-48 sm:h-64 md:h-80 flex-shrink-0">
+                                <img src="images/daythatwin14.jpg" alt="မအူပင်မြို့တွင် ညဘက် လမ်းသွားလမ်းလာများအဆင်ပြေရန် ဆိုလာလမ်းမီးများတပ်ဆင် - ပုံ ၁" class="w-full h-full object-cover">
+                            </div>
+                            <div class="w-full h-48 sm:h-64 md:h-80 flex-shrink-0">
+                                <img src="images/daythatwin15.jpg" alt="မအူပင်မြို့တွင် ညဘက် လမ်းသွားလမ်းလာများအဆင်ပြေရန် ဆိုလာလမ်းမီးများတပ်ဆင် - ပုံ ၂" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+
+                        <button id="prev-btn-6" class="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 sm:p-2 rounded-full transition-all duration-300">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button id="next-btn-6" class="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 sm:p-2 rounded-full transition-all duration-300">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+
+                        <div class="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <button class="carousel-dot-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/70 hover:bg-white transition-all duration-300 active" data-slide="0"></button>
+                            <button class="carousel-dot-6 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/70 hover:bg-white transition-all duration-300" data-slide="1"></button>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-6 md:p-8">
+                        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-dark-gray mb-3 sm:mb-4">မအူပင်မြို့တွင် ညဘက် လမ်းသွားလမ်းလာများအဆင်ပြေရန် ဆိုလာလမ်းမီးများတပ်ဆင်</h3>
+                        <div class="text-sm text-gray-600 mb-4">နိုဝင်ဘာ (၆) - မအူပင်</div>
+                        <div class="prose max-w-none text-dark-gray leading-relaxed">
+                            <p class="mb-4">ဧရာဝတီတိုင်းဒေသကြီး မအူပင်မြို့ တံတားအဆင်းမှ လမ်းဆုံအထိ ဆိုလာလမ်းမီးများ တပ်ဆင်ခြင်းအား မအူပင်အကျိုးလိုလားသူများမှ နိုဝင်ဘာလ (၆) ရက်နေ့မှ စတင်လုပ်ဆောင်နေကြောင်း သိရသည်။</p>
+
+                            <p class="mb-4">"အခု လက်ရှိတော့ အလုံးအရေအတွက် မသိရသေးဘူး။ တပ်ဆင်တာကတော့ တစ်ပတ်လောက်ကြာအုံးမယ်။ အားလုံးပြီးမှ အလုံးအရေအတွက် သိရမှာပါ။ လုပ်တာကတော့ မအူပင်အကျိုးလိုလားသူများက လုပ်တာပါ" ဟု ပါဝင်ဆောင်ရွက်နေသူတစ်ဦးက Today Maubin News Agency သတင်းဌာနသို့ ပြောသည်။</p>
+
+                            <p class="mb-4">အဆိုပါ လုပ်ဆောင်မှုအား မအူပင်မြို့ လျှပ်စစ်ဓါတ်အားဖြန့်ဖြူးရေးဌာနမှ ဝန်ထမ်းများမှ ပါဝင်ကူညီတပ်ဆင်ပေးနေကြောင်းလည်း သိရသည်။</p>
+
+                            <div class="mt-6 pt-4 border-t border-gray-200">
+                                <p class="text-sm text-gray-600 mb-2">Photo - Today Maubin News Agency</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#todaymaubinnewsagency</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#localnews</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article - USDP Delegates Meet Residents -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                        <div class="w-full h-80">
+                            <img src="images/daythatwin9.jpg" alt="ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီမှ ကိုယ်စားလှယ်လောင်းများ အောင်ဟိတ်ကျေးရွာအနီးတဝိုက်ရှိပြည်သူများနှင့်တွေ့ဆုံခြင်း - ပုံ ၁" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-full h-80">
+                            <img src="images/daythatwin10.jpg" alt="ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီမှ ကိုယ်စားလှယ်လောင်းများ အောင်ဟိတ်ကျေးရွာအနီးတဝိုက်ရှိပြည်သူများနှင့်တွေ့ဆုံခြင်း - ပုံ ၂" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-dark-gray mb-4">ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီမှ ကိုယ်စားလှယ်လောင့်များ အောင်ဟိတ်ကျေးရွာအနီးတဝိုက်ရှိ ပြည်သူများနှင့်တွေ့ဆုံ</h3>
+                        <div class="text-sm text-gray-600 mb-4">ပြည့်ဖြိုးပိုင် (မအူပင်) - နိုဝင်ဘာ ၁၁ - မအူပင်</div>
+                        <div class="prose max-w-none text-dark-gray leading-relaxed">
+                            <p class="mb-4">ဧရာဝတီတိုင်းဒေသကြီး မအူပင်မြို့ ပြည်ထောင်စုကြံ့ခိုင်ရေးနှင့်ဖွံ့ဖြိုးရေးပါတီမှ ကိုယ်စားလှယ်လောင်းများသည် နိုဝင်ဘာလ (၁၁) ရက်နေ့ နံနက်ပိုင်းက အောင်ဟိတ်ကျေးရွာအနီးတဝိုက်ရှိ ဒေသခံပြည်သူများနှင့်တွေ့ဆုံခဲ့ကြကြောင်း သိရသည်။</p>
+
+                            <p class="mb-4">"ဒီနေ့တော့ ကျွန်တော်တို့ မအူပင်မြို့နယ် အောင်ဟိတ်ကျေးရွာက ကျွန်တော့်ဆန်စက်ကလေးမှာ အဘဦးကံမြင့်သန်းဦးဆောင်တဲ့ ကျွန်တော်တို့ကိုယ်စားလှယ်လောင်းတွေနဲ့ အောင်ဟိတ်ကျေးရွာနဲ့ အနီးတဝိုက်ရွာတွေက ပြည်သူတွေ တွေ့ဆုံခဲ့ကြပါတယ်" ဟု အမျိုးသားလွှတ်တော်ကိုယ်စားလှယ်လောင်း ဦးအောင်ကျော်မင်း ၏ လူမှုကွန်ရက်စာမျက်နှာတွင် ဖော်ပြချက်အရ သိရသည်။</p>
+
+                            <p class="mb-4">မအူပင်မြို့တွင် ၂၀၂၅ ခုနှစ် ဒီဇင်ဘာလတွင် စတင်ကျင်းပမည့် ပါတီစုံဒီမိုကရေစီရွေးကောက်ပွဲ၌ ပါတီပေါင်း (၈) ပါတီမှ ဝင်ရောက်ယှဉ်ပြိုင်ကြမည်ဖြစ်ကြောင်း သိရသည်။</p>
+
+                            <div class="mt-6 pt-4 border-t border-gray-200">
+                                <p class="text-sm text-gray-600 mb-2">Photo - AKM (FB)</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#todaymaubin</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#မအူပင်</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#usdp</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article - Aung Heit - Saip Tha - Kywedone Road Repair -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
+                    <div class="relative w-full h-80 overflow-hidden">
+                        <div id="image-carousel-5" class="flex transition-transform duration-500 ease-in-out">
+                            <div class="w-full h-80 flex-shrink-0">
+                                <img src="images/daythatwin11.jpg" alt="အောင်ဟိတ် - ဆိပ်သာ - ကျွဲဒုံးလမ်းပြုပြင်မှုစတင် - ပုံ ၁" class="w-full h-full object-cover">
+                            </div>
+                            <div class="w-full h-80 flex-shrink-0">
+                                <img src="images/daythatwin12.jpg" alt="အောင်ဟိတ် - ဆိပ်သာ - ကျွဲဒုံးလမ်းပြုပြင်မှုစတင် - ပုံ ၂" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+
+                        <button id="prev-btn-5" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button id="next-btn-5" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+
+                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <button class="carousel-dot-5 w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all duration-300 active" data-slide="0"></button>
+                            <button class="carousel-dot-5 w-3 h-3 rounded-full bg-white/70 hover:bg-white transition-all duration-300" data-slide="1"></button>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-dark-gray mb-4">မအူပင်မြို့နှင့် ကျွဲဒုံးကျေးရွာသို့ဆက်သွယ်ထားသည့် အောင်ဟိတ် - ဆိပ်သာ - ကျွဲဒုံးလမ်းပြုပြင်မှုစတင်</h3>
+                        <div class="text-sm text-gray-600 mb-4">ပြည့်ဖြိုးပိုင် (မအူပင်) - နိုဝင်ဘာ ၈ - မအူပင်</div>
+                        <div class="prose max-w-none text-dark-gray leading-relaxed">
+                            <p class="mb-4">ဧရာဝတီတိုင်းဒေသကြီး မအူပင်မြို့နှင့် ကျွဲဒုံးတိုက်နယ်သို့ ဆက်သွယ်ထားသည့် အောင်ဟိတ် - ဆိပ်သာ - ကျွဲဒုံးလမ်း ပြုပြင်ခြင်းအား နိုဝင်ဘာလ (၈) ရက်နေ့ နေ့လည်ပိုင်းက စတင်ကာ ဆောင်ရွက်နေကြောင်း သိရသည်။</p>
+
+                            <p class="mb-4">"အောင်ဟိတ် - ဆိပ်သာ - ကျွဲဒုံးလမ်း ဘက်ဟိုးဖြင့် ကျင်းချိင့်များအား မြေသားဖို့ပြီး အောင်ဟိတ် ဆိပ်သာလမ်းပျက်စီးနေသည့် ကျင်း - ချိုင့်များအား မြေသားဖို့ပြီးလမ်းချောအောင်ပြုလုပ်၍ အများပြည်သူများ သွား/လာမှုအဆင်ပြေစေနိုင်ရန် ကျေးလက်ဒေသ ဒေသအကျိုးတော်ဆောင် ဦးမြစိုး KKB မှ ဘက်ဟိုးဖြင့် မြေညှိခြင်း ကျင်း၊ ချိုင့်များအား မြေသားဖို့ပေးခြင်းများ ပြုလုပ်ဆောင်ရွက်ပေးမည်ဖြစ်ကြောင်း သိရပါသည်" ဟု ဒေသခံတစ်ဦး၏ လူမှုကွန်ရက် စာမျက်နှာတွင် ဖော်ပြမှုအရ သိရသည်။</p>
+
+                            <p class="mb-4">မအူပင်မြို့နှင့် ကျွဲဒုံးကျေးရွာသို့ ဆက်သွယ်ထားသည့် အောင်ဟိတ် - ဆိပ်သာ - ကျွဲဒုံးလမ်းသည် ကျေးရွာပေါင်းများစွာသို့ ဆက်သွယ်ထားသည့် အဓိက လမ်းမကြီးတစ်ခုဖြစ်ပြီး လယ်ယာထွက်သီးနှံများနှင့် ကိုင်းသီးနှံများ ထွက်ရှိရာဒေသများ၏ စီးပွားရေးနှင့် ကုန်စည်စီးဆင်းရေးအတွက် အဓိက လမ်းမကြီးတစ်ခုဖြစ်သလို ကျွဲဒုံးတိုက်နယ်နှင့် ဆက်စပ်သည့် ကျေးရွာများအတွက် ပညာရေး၊ ကျန်းမာရေး၊ လူမှုရေးလုပ်ငန်းများ မအူပင်မြို့နှင့် ချိတ်ဆက်လုပ်ဆောင်ရာတွင် အရေးပါသော လမ်းမကြီးတစ်ခုလည်းဖြစ်သည်။</p>
+
+                            <div class="mt-6 pt-4 border-t border-gray-200">
+                                <p class="text-sm text-gray-600 mb-2">Photo - Aung Phyo Wai (FB)</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#todaymaubinnewsagency</span>
+                                    <span class="bg-dark-green text-white px-3 py-1 rounded-full text-sm font-semibold">#localnews</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Main Article - Garbage Cleanup -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
                     <!-- Image Carousel -->
                     <div class="relative w-full h-80 overflow-hidden">
                         <div id="image-carousel" class="flex transition-transform duration-500 ease-in-out">
@@ -303,7 +483,7 @@
                 </div>
 
                 <!-- Article 2 - Damaged Road -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
                     <!-- Image Carousel -->
                     <div class="relative w-full h-80 overflow-hidden">
                         <div id="image-carousel-2" class="flex transition-transform duration-500 ease-in-out">
@@ -358,7 +538,7 @@
                 </div>
 
                 <!-- Article 3 - Boiler Explosion -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
                     <!-- Image Carousel -->
                     <div class="relative w-full h-80 overflow-hidden">
                         <div id="image-carousel-3" class="flex transition-transform duration-500 ease-in-out">
@@ -416,7 +596,7 @@
                 </div>
 
                 <!-- Article 4 - USDP Election Promise -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
                     <!-- Image Carousel -->
                     <div class="relative w-full h-80 overflow-hidden">
                         <div id="image-carousel-4" class="flex transition-transform duration-500 ease-in-out">
@@ -452,7 +632,7 @@
                 </div>
 
                 <!-- Article 5 - Election Commission Announcement -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
                     <!-- Image -->
                     <div class="relative w-full h-80 overflow-hidden">
                         <img src="images/last.jpg" alt="ပြည်ထောင်စုရွေးကောက်ပွဲကော်မရှင်" class="w-full h-full object-cover" style="object-position: center;">
@@ -485,14 +665,15 @@
                     </div>
                 </div>
             </div>
+            <div class="pagination-controls hidden mt-8 flex justify-center items-center space-x-2"></div>
         </div>
 
         <!-- International News Page -->
         <div id="international-page" class="page hidden">
-            <h2 class="text-3xl font-bold text-dark-green mb-6">နိုင်ငံတကာသတင်း</h2>
-            <div class="space-y-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-dark-green mb-4 sm:mb-6">နိုင်ငံတကာသတင်း</h2>
+            <div class="space-y-6 sm:space-y-8 news-list" data-page="international">
                 <!-- Article 1 - Trump and Xi Meeting -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
                     <div class="relative w-full h-96 overflow-hidden">
                         <img src="images/inter.png" alt="ထရမ့်နှင့် ရှီကျင့်ဖိန် တွေ့ဆုံမှု" class="w-full h-full object-cover" style="object-position: 50% 20%;">
                     </div>
@@ -519,14 +700,15 @@
                     </div>
                 </div>
             </div>
+            <div class="pagination-controls hidden mt-8 flex justify-center items-center space-x-2"></div>
         </div>
 
         <!-- Sports News Page -->
         <div id="sports-page" class="page hidden">
-            <h2 class="text-3xl font-bold text-dark-green mb-6">အားကစားသတင်း</h2>
-            <div class="space-y-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-dark-green mb-4 sm:mb-6">အားကစားသတင်း</h2>
+            <div class="space-y-6 sm:space-y-8 news-list" data-page="sports">
                 <!-- Article 1 - Liverpool vs Man United -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
                     <div class="relative w-full h-96 overflow-hidden">
                         <img src="images/arrkasar.png" alt="လီဗာပူး vs မန်ချက်စတာ ယူနိုက်တက်" class="w-full h-full object-cover">
                     </div>
@@ -554,7 +736,7 @@
                 </div>
 
                 <!-- Article 2 - Football Tournament -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
                     <div class="relative w-full h-96 overflow-hidden">
                         <img src="images/arrkasar1.png" alt="ကျွဲဒုံးတိုက်နယ် ကမ်းသာယာ ကမ်းခြေ ဘောလုံးပြိုင်ပွဲ" class="w-full h-full object-cover">
                     </div>
@@ -582,7 +764,7 @@
                 </div>
 
                 <!-- Article 3 - Myanmar U17 Women -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
                     <div class="relative w-full h-96 overflow-hidden">
                         <img src="images/arrkasar2.png" alt="မြန်မာ အမျိုးသမီး U17 ဘောလုံးပွဲ" class="w-full h-full object-cover">
                     </div>
@@ -609,14 +791,15 @@
                     </div>
                 </div>
             </div>
+            <div class="pagination-controls hidden mt-8 flex justify-center items-center space-x-2"></div>
         </div>
 
         <!-- Articles Page -->
         <div id="articles-page" class="page hidden">
-            <h2 class="text-3xl font-bold text-dark-green mb-6">ဆောင်းပါး</h2>
-            <div class="space-y-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-dark-green mb-4 sm:mb-6">ဆောင်းပါး</h2>
+            <div class="space-y-6 sm:space-y-8 news-list" data-page="articles">
                 <!-- Article 1 - About U Kaung Myint Than -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
                     <div class="relative w-full h-96 overflow-hidden">
                         <img src="images/saungpar.jpg" alt="ဦးကံမြင့်သန်း" class="w-full h-full object-cover">
                     </div>
@@ -720,7 +903,7 @@
                 </div>
 
                 <!-- Article 2 - About Dance and Music -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
                     <div class="relative w-full h-96 overflow-hidden">
                         <img src="images/saungpar1.jpg" alt="မြူးမြူးလို့ပျော်" class="w-full h-full object-cover">
                     </div>
@@ -776,7 +959,7 @@
                 </div>
 
                 <!-- Article 3 - About Elections -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden news-item">
                     <div class="relative w-full h-96 overflow-hidden">
                         <img src="images/saungpar3.jpg" alt="မအူပင်တံတား" class="w-full h-full object-cover">
                     </div>
@@ -825,7 +1008,7 @@
 
         <!-- About Us Page -->
         <div id="about-page" class="page hidden">
-            <h2 class="text-3xl font-bold text-dark-green mb-6">သတင်းဌာနအကြောင်း</h2>
+            <h2 class="text-2xl sm:text-3xl font-bold text-dark-green mb-4 sm:mb-6">သတင်းဌာနအကြောင်း</h2>
             <div class="bg-white rounded-lg shadow-md p-6">
                 <p class="text-dark-gray mb-4">Today Maubin News Agency ကို 2025ခုနှစ် အောက်တိုဘာလမှာစတင်တည်ထောင်ခဲ့ပြီး မအူပင်မြို့တွင်အခြေစိုက်သောသတင်းဌာန တစ်ခုဖြစ်ကာ မအူပင်မြို့အပါအဝင် ဒေသတွင်းသတင်းများ ၊ နိုင်ငံတကာသတင်းများ ၊ အားကစာသတင်းများ ၊ ဆောင်းပါးများ ကိုပြည်သူ့များထံ မှန်ကန်စွာ သတင်းမီဒီယာကျင့်ဝတ်နှင့်အညီ ဖော်ပြပေးနေသောသတင်းဌာနတစ်ဖြစ်ပါသည်။</p>
                 
@@ -984,6 +1167,7 @@
             const navLinks = document.querySelectorAll('.nav-link');
             const menuToggle = document.getElementById('menu-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
+            const paginationControllers = {};
             
             // Show home page by default
             showPage('home');
@@ -1017,15 +1201,125 @@
                 });
                 
                 // Show the requested page
-                document.getElementById(pageName + '-page').classList.remove('hidden');
+                const targetPage = document.getElementById(pageName + '-page');
+                if (!targetPage) return;
+                targetPage.classList.remove('hidden');
+
+                const controller = paginationControllers[pageName + '-page'];
+                if (controller && typeof controller.reset === 'function') {
+                    controller.reset();
+                }
             }
+
+            function initPagination(pageId, itemsPerPage = 4) {
+                const page = document.getElementById(pageId);
+                if (!page) return;
+                const list = page.querySelector('.news-list');
+                const controls = page.querySelector('.pagination-controls');
+                if (!list || !controls) return;
+
+                const items = Array.from(list.querySelectorAll('.news-item'));
+                if (!items.length) {
+                    controls.classList.add('hidden');
+                    return;
+                }
+
+                let currentPage = 1;
+                const totalPages = Math.ceil(items.length / itemsPerPage);
+
+                function renderPage() {
+                    items.forEach((item, index) => {
+                        const pageIndex = Math.floor(index / itemsPerPage) + 1;
+                        item.classList.toggle('hidden', pageIndex !== currentPage);
+                    });
+                    renderControls();
+                }
+
+                function renderControls() {
+                    if (totalPages <= 1) {
+                        controls.innerHTML = '';
+                        controls.classList.add('hidden');
+                        return;
+                    }
+
+                    controls.classList.remove('hidden');
+                    controls.innerHTML = '';
+
+                    controls.appendChild(createPaginationButton('Prev', currentPage > 1, () => {
+                        if (currentPage > 1) {
+                            currentPage--;
+                            renderPage();
+                        }
+                    }));
+
+                    for (let i = 1; i <= totalPages; i++) {
+                        controls.appendChild(createPaginationButton(i.toString(), true, () => {
+                            currentPage = i;
+                            renderPage();
+                        }, i === currentPage));
+                    }
+
+                    controls.appendChild(createPaginationButton('Next', currentPage < totalPages, () => {
+                        if (currentPage < totalPages) {
+                            currentPage++;
+                            renderPage();
+                        }
+                    }));
+                }
+
+                function goToPage(pageNumber) {
+                    if (pageNumber < 1 || pageNumber > totalPages) return;
+                    currentPage = pageNumber;
+                    renderPage();
+                }
+
+                paginationControllers[pageId] = {
+                    reset: () => goToPage(1),
+                    goToPage
+                };
+
+                renderPage();
+            }
+
+            function createPaginationButton(label, enabled, onClick, isActive = false) {
+                const baseClasses = 'px-2 sm:px-3 py-1.5 sm:py-1 rounded-md border text-xs sm:text-sm transition-colors duration-200 min-w-[2.5rem] sm:min-w-0';
+                const button = document.createElement('button');
+                button.textContent = label;
+
+                if (isActive) {
+                    button.className = `${baseClasses} bg-dark-green text-white border-dark-green`;
+                } else if (enabled) {
+                    button.className = `${baseClasses} text-dark-green border-dark-green bg-white hover:bg-dark-green hover:text-white`;
+                } else {
+                    button.className = `${baseClasses} text-gray-400 border-gray-300 bg-white cursor-not-allowed`;
+                }
+
+                if (!isActive && enabled) {
+                    button.addEventListener('click', onClick);
+                }
+
+                return button;
+            }
+
+            const paginationSettings = {
+                'local-page': 4,
+                'international-page': 4,
+                'sports-page': 4,
+                'articles-page': 4
+            };
+
+            Object.entries(paginationSettings).forEach(([pageId, itemsPerPage]) => {
+                initPagination(pageId, itemsPerPage);
+            });
             
             // Image Carousel functionality for multiple carousels
             const carouselStates = {
                 'image-carousel': { currentSlide: 0, totalSlides: 3 },
                 'image-carousel-2': { currentSlide: 0, totalSlides: 3 },
                 'image-carousel-3': { currentSlide: 0, totalSlides: 3 },
-                'image-carousel-4': { currentSlide: 0, totalSlides: 1 }
+                'image-carousel-4': { currentSlide: 0, totalSlides: 1 },
+                'image-carousel-5': { currentSlide: 0, totalSlides: 2 },
+                'image-carousel-6': { currentSlide: 0, totalSlides: 2 }
             };
             
             // Function to update carousel position
@@ -1044,6 +1338,10 @@
                     dotsSelector = '.carousel-dot-3';
                 } else if (carouselId === 'image-carousel-4') {
                     dotsSelector = '.carousel-dot-4';
+                } else if (carouselId === 'image-carousel-5') {
+                    dotsSelector = '.carousel-dot-5';
+                } else if (carouselId === 'image-carousel-6') {
+                    dotsSelector = '.carousel-dot-6';
                 } else {
                     dotsSelector = '.carousel-dot';
                 }
@@ -1090,6 +1388,14 @@
                     prevBtnSelector = 'prev-btn-4';
                     nextBtnSelector = 'next-btn-4';
                     dotsSelector = '.carousel-dot-4';
+                } else if (carouselId === 'image-carousel-5') {
+                    prevBtnSelector = 'prev-btn-5';
+                    nextBtnSelector = 'next-btn-5';
+                    dotsSelector = '.carousel-dot-5';
+                } else if (carouselId === 'image-carousel-6') {
+                    prevBtnSelector = 'prev-btn-6';
+                    nextBtnSelector = 'next-btn-6';
+                    dotsSelector = '.carousel-dot-6';
                 }
                 
                 const prevBtn = document.getElementById(prevBtnSelector);
@@ -1148,6 +1454,8 @@
             initCarousel('image-carousel-2');
             initCarousel('image-carousel-3');
             initCarousel('image-carousel-4');
+            initCarousel('image-carousel-5');
+            initCarousel('image-carousel-6');
         });
     </script>
 </body>
